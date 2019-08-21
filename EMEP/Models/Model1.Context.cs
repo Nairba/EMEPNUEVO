@@ -34,7 +34,6 @@ namespace EMEP.Models
         public virtual DbSet<Compartir_Expediente> Compartir_Expediente { get; set; }
         public virtual DbSet<Consulta> Consulta { get; set; }
         public virtual DbSet<Consultorio> Consultorio { get; set; }
-        public virtual DbSet<Datos_Paciente> Datos_Paciente { get; set; }
         public virtual DbSet<Enfermedad_Expediente> Enfermedad_Expediente { get; set; }
         public virtual DbSet<Enfermedad_Familiar> Enfermedad_Familiar { get; set; }
         public virtual DbSet<Especialidad> Especialidad { get; set; }
@@ -54,7 +53,6 @@ namespace EMEP.Models
         public virtual DbSet<Paciente> Paciente { get; set; }
         public virtual DbSet<Paciente_Asociado> Paciente_Asociado { get; set; }
         public virtual DbSet<Paciente_Dueño_Asociado> Paciente_Dueño_Asociado { get; set; }
-        public virtual DbSet<Paciente_Paciente_Asociado> Paciente_Paciente_Asociado { get; set; }
         public virtual DbSet<RegistrarCita> RegistrarCita { get; set; }
         public virtual DbSet<Tipo_Usuario> Tipo_Usuario { get; set; }
     }
