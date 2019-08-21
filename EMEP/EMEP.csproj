@@ -207,7 +207,6 @@
     <Compile Include="Controllers\MedicamentoController.cs" />
     <Compile Include="Controllers\MedicoController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
-    <Compile Include="Controllers\RegistrarPacienteController.cs" />
     <Compile Include="Models\Administrador.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
