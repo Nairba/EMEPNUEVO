@@ -160,6 +160,8 @@ C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\System.Web.WebPages.Razor.xml
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\System.Web.Optimization.xml
+C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\es\EntityFramework.resources.dll
+C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\es\EntityFramework.SqlServer.resources.dll
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
@@ -177,5 +179,6 @@ C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\es\System.Web.WebPages.Razor.resources.dll
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\es\System.Web.Optimization.resources.dll
+C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\obj\Debug\EMEP.csprojResolveAssemblyReference.cache
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\obj\Debug\EMEP.dll
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\obj\Debug\EMEP.pdb

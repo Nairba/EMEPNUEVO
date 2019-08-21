@@ -11,8 +11,7 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Tipo_Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,12 +20,10 @@ namespace EMEP.Models
             this.Administrador = new HashSet<Administrador>();
             this.Medico = new HashSet<Medico>();
             this.Paciente = new HashSet<Paciente>();
+            this.Paciente_Asociado = new HashSet<Paciente_Asociado>();
         }
     
-        [Key]
         public int id { get; set; }
-        [Display(Name = "Tipo de usuario")]
-        [Required(ErrorMessage = "Seleccione el tipo de usuario")]
         public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -35,5 +32,7 @@ namespace EMEP.Models
         public virtual ICollection<Medico> Medico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Paciente> Paciente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Paciente_Asociado> Paciente_Asociado { get; set; }
     }
 }
