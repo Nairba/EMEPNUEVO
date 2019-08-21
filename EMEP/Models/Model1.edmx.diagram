@@ -62,6 +62,11 @@
         <AssociationConnector Association="EMEPModel.FK_RegistrarCita_Consulta" />
         <AssociationConnector Association="EMEPModel.FK_RegistrarCita_Horario" />
         <AssociationConnector Association="EMEPModel.FK_ListaCita_RegistrarCita" />
+        <EntityTypeShape EntityType="EMEPModel.Paciente_Asociado" Width="1.5" PointX="3" PointY="22.125" />
+        <EntityTypeShape EntityType="EMEPModel.Paciente_Dueño_Asociado" Width="1.5" PointX="5.25" PointY="25.75" />
+        <AssociationConnector Association="EMEPModel.FK_Paciente_Dueño_Asociado_Paciente" />
+        <AssociationConnector Association="EMEPModel.FK_Paciente_Asociado_Tipo_Usuario" />
+        <AssociationConnector Association="EMEPModel.FK_Paciente_Dueño_Asociado_Paciente_Asociado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
