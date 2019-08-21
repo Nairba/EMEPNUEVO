@@ -22,7 +22,33 @@ namespace EMEP.Controllers
             return View(paciente.ToList());
         }
 
-      
+        public ActionResult IndexPa()
+        {
+
+            string correoSesion = Session["CorreoId"].ToString();
+            var pacientes = from m in db.Paciente
+                          where m.correo == correoSesion
+                          select m;
+
+            foreach (var paciente in pacientes)
+            {
+                if (paciente.correo.Equals(correoSesion))
+                {
+                    if (paciente.estado == 1)
+                    {
+
+                        paciente.estado_String = "Activo";
+                    }
+                    if (paciente.estado == 2)
+                    {
+                        paciente.estado_String = "Inactivo";
+                    }
+                }
+                pacientes.Include(paciente.ToString());
+            }
+            return View(pacientes.ToList());
+        }
+
 
         // GET: Paciente/Details/5
         public ActionResult Details(string id)
@@ -90,7 +116,7 @@ namespace EMEP.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "correo,cedula,nombre,p_Apellido,s_Apellido,contrasenna,sexo,estado,ID_TIPO_USUARIO")] Paciente paciente)
+        public ActionResult Edit(Paciente paciente)
         {
             if (ModelState.IsValid)
             {
