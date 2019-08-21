@@ -10,29 +10,23 @@
 namespace EMEP.Models
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Paciente_Paciente_Asociado
     {
+        [Key]
+
         public string ID_PACIENTE { get; set; }
         public int ID_PACIENTE_ASOCIADO { get; set; }
         public int id { get; set; }
-
-        public Paciente paciente { get; set; }
-        public Datos_Paciente datosPaciente { get; set; }
-
-       public static List<Paciente> listaPaciente1 { get; set; }
-        public static List<Datos_Paciente> listaDatos1 { get; set; }
-
-  public List<Paciente_Paciente_Asociado> listaAsociado { get; set; }
-
-
+    
         public virtual Datos_Paciente Datos_Paciente { get; set; }
         public virtual Paciente Paciente { get; set; }
 
-       
+        public static List<Paciente> listaPaciente1 { get; set; }
+        public static List<Datos_Paciente> listaDatos1 { get; set; }
 
-
+        public List<Paciente_Paciente_Asociado> listaAsociado { get; set; }
     }
 }

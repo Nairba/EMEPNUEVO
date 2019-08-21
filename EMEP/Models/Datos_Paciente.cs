@@ -11,7 +11,9 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Datos_Paciente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +21,30 @@ namespace EMEP.Models
         {
             this.Paciente_Paciente_Asociado = new HashSet<Paciente_Paciente_Asociado>();
         }
-    
+
+        [Key]
         public int id { get; set; }
-        public System.DateTime fecha_nacimiento { get; set; }
+        [Display(Name = "Fecha de nacimiento")]
+        [Column(TypeName = "date")]
+        [DataType(DataType.Date, ErrorMessage = "Debe ser tipo Fecha")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",
+           ApplyFormatInEditMode = true)]
+        public DateTime fecha_nacimiento { get; set; }
+        [Display(Name = "Tipo de msangre")]
+        [Required(ErrorMessage = "Debe seleccionar tipo de sangre")]
         public string tipo_sangre { get; set; }
+        [Display(Name = "Recidencia")]
+        [Required(ErrorMessage = "Debe escribir la residdencia")]
         public string recidencia { get; set; }
+
+        [Display(Name = "Teléfono")]
+        [Required(ErrorMessage = "Debe escribir el número de teléfono")]
         public string telefono { get; set; }
+        [Display(Name = "Contacto de emergencia")]
+        [Required(ErrorMessage = "Debe escribir el contacto de emergencia")]
         public string contacto_emergencia { get; set; }
+        [Display(Name = "Parentesco")]
+        [Required(ErrorMessage = "Debe seleccionar el parentesco")]
         public string parentesco { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

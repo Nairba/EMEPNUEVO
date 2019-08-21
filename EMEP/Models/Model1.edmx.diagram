@@ -66,6 +66,7 @@
         <AssociationConnector Association="EMEPModel.FK_RegistrarCita_Consulta" />
         <AssociationConnector Association="EMEPModel.FK_RegistrarCita_Horario" />
         <AssociationConnector Association="EMEPModel.FK_ListaCita_RegistrarCita" />
+        <AssociationConnector Association="EMEPModel.FK_RegistrarCita_Paciente" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

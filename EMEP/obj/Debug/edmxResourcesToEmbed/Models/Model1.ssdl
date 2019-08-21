@@ -169,7 +169,7 @@
     <Property Name="minutos" Type="int" />
     <Property Name="cant_veces" Type="int" />
     <Property Name="ID_EXPEDIENTE" Type="int" Nullable="false" />
-    <Property Name="img" Type="nvarchar" MaxLength="50" />
+    <Property Name="img" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Lista_Alergia">
     <Key>
@@ -182,7 +182,7 @@
     <Property Name="reaccion" Type="nvarchar" MaxLength="50" />
     <Property Name="observaciones" Type="nvarchar" MaxLength="50" />
     <Property Name="ID_EXPEDIENTE" Type="int" />
-    <Property Name="img" Type="nvarchar" MaxLength="50" />
+    <Property Name="img" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Lista_Enfermedad">
     <Key>
@@ -193,7 +193,7 @@
     <Property Name="ID_CATEGORIA" Type="int" Nullable="false" />
     <Property Name="estado" Type="int" Nullable="false" />
     <Property Name="ID_EXPEDIENTE" Type="int" />
-    <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="img" Type="varbinary(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ListaCita">
     <Key>
@@ -236,7 +236,7 @@
     <Property Name="minutos" Type="int" />
     <Property Name="cant_veces" Type="int" />
     <Property Name="ID_EXPEDIENTE" Type="int" />
-    <Property Name="img" Type="nvarchar" MaxLength="50" />
+    <Property Name="img" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Otra_Alergia">
     <Key>
@@ -247,7 +247,7 @@
     <Property Name="estado" Type="int" />
     <Property Name="reaccion" Type="nvarchar" MaxLength="50" />
     <Property Name="observaciones" Type="nvarchar" MaxLength="50" />
-    <Property Name="img" Type="nvarchar" MaxLength="50" />
+    <Property Name="img" Type="varbinary(max)" />
     <Property Name="ID_EXPEDIENTE" Type="int" />
     <Property Name="ID_CATEGORIA" Type="int" />
   </EntityType>
@@ -259,7 +259,7 @@
     <Property Name="descripciom" Type="nvarchar" MaxLength="50" />
     <Property Name="categoria" Type="nvarchar" MaxLength="50" />
     <Property Name="estado" Type="int" />
-    <Property Name="img" Type="nvarchar" MaxLength="50" />
+    <Property Name="img" Type="varbinary(max)" />
     <Property Name="ID_EXPEDIENTE" Type="int" />
   </EntityType>
   <EntityType Name="Paciente">
@@ -660,6 +660,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_RegistrarCita_Paciente">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="RegistrarCita" Type="Self.RegistrarCita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="RegistrarCita">
+        <PropertyRef Name="ID_PACIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Usuario_Tipo_Usuario">
     <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1" />
     <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
@@ -818,6 +830,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_RegistrarCita_Horario" Association="Self.FK_RegistrarCita_Horario">
       <End Role="Horario" EntitySet="Horario" />
+      <End Role="RegistrarCita" EntitySet="RegistrarCita" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegistrarCita_Paciente" Association="Self.FK_RegistrarCita_Paciente">
+      <End Role="Paciente" EntitySet="Paciente" />
       <End Role="RegistrarCita" EntitySet="RegistrarCita" />
     </AssociationSet>
     <AssociationSet Name="FK_Usuario_Tipo_Usuario" Association="Self.FK_Usuario_Tipo_Usuario">

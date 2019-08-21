@@ -11,7 +11,8 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Lista_Enfermedad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,14 +21,29 @@ namespace EMEP.Models
             this.Enfermedad_Expediente = new HashSet<Enfermedad_Expediente>();
             this.Enfermedad_Familiar = new HashSet<Enfermedad_Familiar>();
         }
-    
+    [Key]
         public int id { get; set; }
+        [Display(Name = "Nombre")]
+        [Required(ErrorMessage = "Debe de escribir el nombre")]
         public string descripcion { get; set; }
+        [Display(Name = "Categoria")]
+        [Required(ErrorMessage = "Seleccione la categoria")]
         public int ID_CATEGORIA { get; set; }
+
+        [Display(Name = "Estado")]
+        [Required(ErrorMessage = "Seleccione el estado")]
+        public string estado_String { get; set; }
         public int estado { get; set; }
-        public Nullable<int> ID_EXPEDIENTE { get; set; }
-        public string img { get; set; }
-    
+
+        [Display(Name = "Expediente")]
+        [Required(ErrorMessage = "Seleccione el expediente")]
+        public int ID_EXPEDIENTE { get; set; }
+
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "Imagen")]
+        [Required(ErrorMessage = "Seleccione imegen")]
+        public byte[] img { get; set; }
+        [Display(Name = "Categoria")]
         public virtual Categoria Categoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Enfermedad_Expediente> Enfermedad_Expediente { get; set; }

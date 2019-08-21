@@ -11,7 +11,9 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Categoria_Alergia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +22,11 @@ namespace EMEP.Models
             this.Lista_Alergia = new HashSet<Lista_Alergia>();
         }
     
+        [Key]
         public int id { get; set; }
+        [Column(TypeName = "text")]
+        [Display(Name = "Descripción")]
+        [DataType(DataType.MultilineText)]
         public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
