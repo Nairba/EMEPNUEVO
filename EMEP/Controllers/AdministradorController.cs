@@ -24,7 +24,7 @@ namespace EMEP.Controllers
 
                     item.estado_String = "Activo";
                 }
-                if (item.estado == 2)
+                if (item.estado == 0)
                 {
 
                     item.estado_String = "Inactivo";
@@ -46,7 +46,7 @@ namespace EMEP.Controllers
 
                 administrador.estado_String = "Activo";
             }
-            if (administrador.estado == 2)
+            if (administrador.estado == 0)
             {
 
                 administrador.estado_String = "Inactivo";
@@ -72,18 +72,10 @@ namespace EMEP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Administrador administrador)
         {
-            if (administrador.estad)
-            {
-
-                administrador.estado = 1;
-            }
-            else
-            {
-
-                administrador.estado = 2;
-            }
+            
             if (ModelState.IsValid)
             {
+                administrador.estado = 1;
                 db.Administrador.Add(administrador);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -116,14 +108,6 @@ namespace EMEP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Administrador administrador)
         {
-            if (administrador.estad)
-            {
-                administrador.estado = 1;
-            }
-            else
-            {
-                administrador.estado = 2;
-            }
             if (ModelState.IsValid)
             {
                 db.Entry(administrador).State = EntityState.Modified;
@@ -155,6 +139,15 @@ namespace EMEP.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Administrador administrador = db.Administrador.Find(id);
+
+            if (administrador.estado==0)
+            {
+                administrador.estado = 1;
+            }
+            else
+            {
+                administrador.estado = 0;
+            }
             db.Administrador.Remove(administrador);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -18,6 +18,10 @@ namespace EMEP.Controllers
         // GET: Paciente
         public ActionResult Index()
         {
+            if (TempData.ContainsKey("mensaje"))
+            {
+                ViewBag.Mensaje = TempData["mensaje"].ToString();
+            }
             var paciente = db.Paciente.Include(p => p.Tipo_Usuario);
             return View(paciente.ToList());
         }
@@ -82,7 +86,7 @@ namespace EMEP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Paciente paciente)
         {
-            if (ModelState.IsValid)
+            try
             {
 
                 //listaPaciente.Add(paciente);
@@ -93,9 +97,11 @@ namespace EMEP.Controllers
                 return RedirectToAction("index");
 
             }
-
-            ViewBag.listaTipo = new SelectList(db.Tipo_Usuario, "id", "descripcion", paciente.ID_TIPO_USUARIO);
-            return View(paciente);
+            catch
+            {
+                ViewBag.listaTipo = new SelectList(db.Tipo_Usuario, "id", "descripcion", paciente.ID_TIPO_USUARIO);
+                return View(paciente);
+            }
         }
 
         // GET: Paciente/Edit/5
@@ -127,6 +133,7 @@ namespace EMEP.Controllers
             {
                 db.Entry(paciente).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["mensaje"] = "Paciente Actualizado.";
                 return RedirectToAction("Index");
             }
             catch

@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="EMEPModel.Compartir_Expediente" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Consulta" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Consultorio" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMEPModel.Datos_Paciente" Width="1.5" PointX="3" PointY="24.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Enfermedad_Expediente" Width="1.5" PointX="10.5" PointY="32.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Enfermedad_Familiar" Width="1.5" PointX="10.5" PointY="35.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Especialidad" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
@@ -30,7 +29,6 @@
         <EntityTypeShape EntityType="EMEPModel.Otra_Alergia" Width="1.5" PointX="7.5" PointY="27.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Otra_Enfermedad" Width="1.5" PointX="7.5" PointY="21.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Paciente" Width="1.5" PointX="3" PointY="27.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMEPModel.Paciente_Paciente_Asociado" Width="1.5" PointX="5.25" PointY="28.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Tipo_Usuario" Width="1.5" PointX="0.75" PointY="25.125" IsExpanded="true" />
         <AssociationConnector Association="EMEPModel.FK_Administrador_Tipo_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="EMEPModel.FK_Alcohol_Expediente" ManuallyRouted="false" />
@@ -41,7 +39,6 @@
         <AssociationConnector Association="EMEPModel.FK_Consulta_Consultorio" ManuallyRouted="false" />
         <AssociationConnector Association="EMEPModel.FK_Consulta_Especialidad" ManuallyRouted="false" />
         <AssociationConnector Association="EMEPModel.FK_Consulta_Medico" ManuallyRouted="false" />
-        <AssociationConnector Association="EMEPModel.FK_Paciente_Paciente_Asociado_Datos_Paciente" ManuallyRouted="false" />
         <AssociationConnector Association="EMEPModel.FK_Enfermedad_Expediente_Expediente" ManuallyRouted="false" />
         <AssociationConnector Association="EMEPModel.FK_Enfermedad_Expediente_Lista_Enfermedad" ManuallyRouted="false" />
         <AssociationConnector Association="EMEPModel.FK_Enfermedad_Familiar_Expediente" ManuallyRouted="false" />
@@ -53,7 +50,6 @@
         <AssociationConnector Association="EMEPModel.FK_Medicamento_Expediente" ManuallyRouted="false" />
         <AssociationConnector Association="EMEPModel.FK_Expediente_Alergia_Lista_Alergia" ManuallyRouted="false" />
         <AssociationConnector Association="EMEPModel.FK_Usuario_Tipo_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="EMEPModel.FK_Paciente_Paciente_Asociado_Paciente" ManuallyRouted="false" />
         <AssociationConnector Association="EMEPModel.FK_Paciente_Tipo_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="EMEPModel.FK_Otra_Actividad_Expediente" />
         <AssociationConnector Association="EMEPModel.FK_Otra_Alergia_Expediente" />

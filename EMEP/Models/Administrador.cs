@@ -11,7 +11,7 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Administrador
     {
         public int id { get; set; }
@@ -19,10 +19,7 @@ namespace EMEP.Models
         public string contraseña { get; set; }
         public int estado { get; set; }
         public int ID_TIPO_USUARIO { get; set; }
-
+    
         public virtual Tipo_Usuario Tipo_Usuario { get; set; }
-
-        public bool estad { get; set; }
-        public string estado_String { get; set; }
     }
 }
