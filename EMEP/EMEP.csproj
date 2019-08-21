@@ -198,11 +198,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ConsultaController.cs" />
     <Compile Include="Controllers\ConsultorioController.cs" />
-    <Compile Include="Controllers\Datos_PacienteController.cs" />
     <Compile Include="Controllers\EspecialidadController.cs" />
     <Compile Include="Controllers\MedicoController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
-    <Compile Include="Controllers\Paciente_Paciente_AsociadoController.cs" />
     <Compile Include="Controllers\RegistrarPacienteController.cs" />
     <Compile Include="Models\Administrador.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -487,17 +485,6 @@
     <Content Include="Views\Paciente\Details.cshtml" />
     <Content Include="Views\Paciente\Edit.cshtml" />
     <Content Include="Views\Paciente\Index.cshtml" />
-    <Content Include="Views\Paciente_Paciente_Asociado\Create.cshtml" />
-    <Content Include="Views\Paciente_Paciente_Asociado\Delete.cshtml" />
-    <Content Include="Views\Paciente_Paciente_Asociado\Details.cshtml" />
-    <Content Include="Views\Paciente_Paciente_Asociado\Edit.cshtml" />
-    <Content Include="Views\Paciente_Paciente_Asociado\Index.cshtml" />
-    <Content Include="Views\Datos_Paciente\CreateDatos.cshtml" />
-    <Content Include="Views\Datos_Paciente\Delete.cshtml" />
-    <Content Include="Views\Datos_Paciente\Details.cshtml" />
-    <Content Include="Views\Datos_Paciente\Edit.cshtml" />
-    <Content Include="Views\Datos_Paciente\Index.cshtml" />
-    <Content Include="Views\Paciente_Paciente_Asociado\IndexPaciente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
