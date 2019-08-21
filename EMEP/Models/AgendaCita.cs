@@ -11,13 +11,24 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class AgendaCita
     {
+        [Key]
         public int id { get; set; }
+
+        [Display(Name = "Hora")]
+        [Required(ErrorMessage = "Seleccione la hora")]
         public int idHora { get; set; }
+
+        [Column(TypeName = "text")]
+        [Display(Name = "Descripción")]
+        [DataType(DataType.MultilineText)]
         public string detalle { get; set; }
-    
+
+        [Display(Name = "Hora")]
         public virtual Horario Horario { get; set; }
     }
 }

@@ -11,16 +11,21 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Enfermedad_Familiar
     {
+        [Key]
         public int id { get; set; }
-        public string parentesco { get; set; }
-        public string observaciones { get; set; }
+        [Display(Name = "Enfermedad")]
+        [Required(ErrorMessage = "Seleccione la enfermedad")]
+        public int ID_EFERMEDAD { get; set; }
+        [Display(Name = "Expediente")]
+        [Required(ErrorMessage = "Seleccione el expediente")]
         public int ID_EXPEDIENTE { get; set; }
-        public Nullable<int> ID_ENFERMEDAD { get; set; }
-    
+        [Display(Name = "Expediente")]
         public virtual Expediente Expediente { get; set; }
+        [Display(Name = "Enfermedad")]
         public virtual Lista_Enfermedad Lista_Enfermedad { get; set; }
     }
 }
