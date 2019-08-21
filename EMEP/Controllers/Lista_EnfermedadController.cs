@@ -80,17 +80,17 @@ namespace EMEP.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Lista_Enfermedad lista_Enfermedad, HttpPostedFileBase ImageData)
+        public ActionResult Create(Lista_Enfermedad lista_Enfermedad)
         {
-            if (ImageData != null && ImageData.ContentLength > 0)
-            {
-                byte[] imagenData = null;
-                using (var binaryImagen = new BinaryReader(ImageData.InputStream))
-                {
-                    imagenData = binaryImagen.ReadBytes(ImageData.ContentLength);
-                }
-                lista_Enfermedad.img = imagenData;
-            }
+            //if (ImageData != null && ImageData.ContentLength > 0)
+            //{
+            //    byte[] imagenData = null;
+            //    using (var binaryImagen = new BinaryReader(ImageData.InputStream))
+            //    {
+            //        imagenData = binaryImagen.ReadBytes(ImageData.ContentLength);
+            //    }
+            //    lista_Enfermedad.img = imagenData;
+            //}
             try
             {
                 lista_Enfermedad.estado = 1;

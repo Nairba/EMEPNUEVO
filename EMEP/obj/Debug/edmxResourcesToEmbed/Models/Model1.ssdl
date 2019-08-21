@@ -83,6 +83,18 @@
     <Property Name="descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="numero" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Datos_Paciente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+    <Property Name="tipo_sangre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="recidencia" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="telefono" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="contacto_emergencia" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="parentesco" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="Enfermedad_Expediente">
     <Key>
       <PropertyRef Name="id" />
@@ -157,7 +169,7 @@
     <Property Name="minutos" Type="int" />
     <Property Name="cant_veces" Type="int" />
     <Property Name="ID_EXPEDIENTE" Type="int" Nullable="false" />
-    <Property Name="img" Type="varbinary(max)" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Lista_Alergia">
     <Key>
@@ -181,7 +193,7 @@
     <Property Name="ID_CATEGORIA" Type="int" Nullable="false" />
     <Property Name="estado" Type="int" Nullable="false" />
     <Property Name="ID_EXPEDIENTE" Type="int" />
-    <Property Name="img" Type="varbinary(max)" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="ListaCita">
     <Key>
@@ -224,7 +236,7 @@
     <Property Name="minutos" Type="int" />
     <Property Name="cant_veces" Type="int" />
     <Property Name="ID_EXPEDIENTE" Type="int" />
-    <Property Name="img" Type="varbinary(max)" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Otra_Alergia">
     <Key>
@@ -235,7 +247,7 @@
     <Property Name="estado" Type="int" />
     <Property Name="reaccion" Type="nvarchar" MaxLength="50" />
     <Property Name="observaciones" Type="nvarchar" MaxLength="50" />
-    <Property Name="img" Type="varbinary(max)" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" />
     <Property Name="ID_EXPEDIENTE" Type="int" />
     <Property Name="ID_CATEGORIA" Type="int" />
   </EntityType>
@@ -247,7 +259,7 @@
     <Property Name="descripciom" Type="nvarchar" MaxLength="50" />
     <Property Name="categoria" Type="nvarchar" MaxLength="50" />
     <Property Name="estado" Type="int" />
-    <Property Name="img" Type="varbinary(max)" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" />
     <Property Name="ID_EXPEDIENTE" Type="int" />
   </EntityType>
   <EntityType Name="Paciente">
@@ -292,6 +304,14 @@
     <Property Name="ID_PACIENTE_DUE" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ID_PACIENTE_ASO" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Paciente_Paciente_Asociado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="ID_PACIENTE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_PACIENTE_ASOCIADO" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
   <EntityType Name="RegistrarCita">
     <Key>
       <PropertyRef Name="id" />
@@ -302,16 +322,6 @@
     <Property Name="ID_HORARIO" Type="int" Nullable="false" />
     <Property Name="disponible" Type="int" Nullable="false" />
     <Property Name="descripcion" Type="text" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Tipo_Usuario">
     <Key>
@@ -644,6 +654,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Paciente_Paciente_Asociado_Datos_Paciente">
+    <End Role="Datos_Paciente" Type="Self.Datos_Paciente" Multiplicity="1" />
+    <End Role="Paciente_Paciente_Asociado" Type="Self.Paciente_Paciente_Asociado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Paciente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Paciente_Paciente_Asociado">
+        <PropertyRef Name="ID_PACIENTE_ASOCIADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Paciente_Tipo_Usuario">
     <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1" />
     <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
@@ -702,6 +724,7 @@
     <EntitySet Name="Compartir_Expediente" EntityType="Self.Compartir_Expediente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Consulta" EntityType="Self.Consulta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Consultorio" EntityType="Self.Consultorio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Datos_Paciente" EntityType="Self.Datos_Paciente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Enfermedad_Expediente" EntityType="Self.Enfermedad_Expediente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Enfermedad_Familiar" EntityType="Self.Enfermedad_Familiar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
@@ -721,8 +744,8 @@
     <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Paciente_Asociado" EntityType="Self.Paciente_Asociado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Paciente_Dueño_Asociado" EntityType="Self.Paciente_Dueño_Asociado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paciente_Paciente_Asociado" EntityType="Self.Paciente_Paciente_Asociado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RegistrarCita" EntityType="Self.RegistrarCita" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Administrador_Tipo_Usuario" Association="Self.FK_Administrador_Tipo_Usuario">
       <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
@@ -831,6 +854,10 @@
     <AssociationSet Name="FK_Paciente_Dueño_Asociado_Paciente_Asociado" Association="Self.FK_Paciente_Dueño_Asociado_Paciente_Asociado">
       <End Role="Paciente_Asociado" EntitySet="Paciente_Asociado" />
       <End Role="Paciente_Dueño_Asociado" EntitySet="Paciente_Dueño_Asociado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paciente_Paciente_Asociado_Datos_Paciente" Association="Self.FK_Paciente_Paciente_Asociado_Datos_Paciente">
+      <End Role="Datos_Paciente" EntitySet="Datos_Paciente" />
+      <End Role="Paciente_Paciente_Asociado" EntitySet="Paciente_Paciente_Asociado" />
     </AssociationSet>
     <AssociationSet Name="FK_Paciente_Tipo_Usuario" Association="Self.FK_Paciente_Tipo_Usuario">
       <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
