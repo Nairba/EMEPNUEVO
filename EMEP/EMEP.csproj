@@ -539,6 +539,8 @@
     <Content Include="Views\Paciente_Dueño_Asociado\Details.cshtml" />
     <Content Include="Views\Paciente_Dueño_Asociado\Edit.cshtml" />
     <Content Include="Views\Paciente_Dueño_Asociado\Index.cshtml" />
+    <Content Include="Views\Paciente\Indexp.cshtml" />
+    <Content Include="Views\Administrador\RegistroPacientes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

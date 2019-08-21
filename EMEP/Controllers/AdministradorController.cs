@@ -219,8 +219,7 @@ namespace EMEP.Controllers
                 {
                     var administradorDB = db.Administrador.Where(a => a.correo.Equals(correo) && a.contraseña.Equals(contrasenna)).FirstOrDefault();
                     var medicoDB = db.Medico.Where(a => a.correo.Equals(correo) && a.contrasenna.Equals(contrasenna)).FirstOrDefault();
-                    var pacienteDB = db.Paciente.Where(a => a.correo.Equals(correo) && a.contrasenna.Equals(contrasenna) && a.estado == 1).FirstOrDefault();
-
+                    var pacienteDB = db.Paciente.Where(a => a.correo.Equals(correo) && a.contrasenna.Equals(contrasenna)).FirstOrDefault();
 
                     if (administradorDB != null && administradorDB.estado == 1)
                     {
@@ -241,7 +240,7 @@ namespace EMEP.Controllers
                         Session["CorreoId"] = pacienteDB.correo.ToString();
                         Session["Nombre"] = pacienteDB.nombre.ToString();
                         //TempData["mensaje"] = "Bienvenid@";
-                        return RedirectToAction("IndexAC", "Home");
+                        return RedirectToAction("IndexPa", "Home");
                     }
                 }
                 TempData["mensaje"] = "Datos invalidos, verifique";
@@ -253,7 +252,14 @@ namespace EMEP.Controllers
                 return View(ad);
             }
         }
-        
+
+        [HttpPost]
+        public ActionResult RegistroPacientes()
+        {
+
+            return RedirectToAction("InicioSecion", "Paciente"); ;
+        }
+
         public ActionResult LogOff()
         {
             Session.Clear();
