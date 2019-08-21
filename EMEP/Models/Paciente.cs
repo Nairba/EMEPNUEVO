@@ -83,3 +83,4 @@ namespace EMEP.Models
         public virtual ICollection<RegistrarCita> RegistrarCita { get; set; }
     }
 }
+
