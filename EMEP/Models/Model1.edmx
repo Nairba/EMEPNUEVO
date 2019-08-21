@@ -88,18 +88,6 @@
           <Property Name="descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="numero" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Datos_Paciente">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
-          <Property Name="tipo_sangre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="recidencia" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="telefono" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="contacto_emergencia" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="parentesco" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="Enfermedad_Expediente">
           <Key>
             <PropertyRef Name="id" />
@@ -308,14 +296,6 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="ID_PACIENTE_DUE" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_PACIENTE_ASO" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Paciente_Paciente_Asociado">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ID_PACIENTE" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ID_PACIENTE_ASOCIADO" Type="int" Nullable="false" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="RegistrarCita">
           <Key>
@@ -659,18 +639,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Paciente_Paciente_Asociado_Datos_Paciente">
-          <End Role="Datos_Paciente" Type="Self.Datos_Paciente" Multiplicity="1" />
-          <End Role="Paciente_Paciente_Asociado" Type="Self.Paciente_Paciente_Asociado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Datos_Paciente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Paciente_Paciente_Asociado">
-              <PropertyRef Name="ID_PACIENTE_ASOCIADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Paciente_Tipo_Usuario">
           <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1" />
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
@@ -729,7 +697,6 @@
           <EntitySet Name="Compartir_Expediente" EntityType="Self.Compartir_Expediente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Consulta" EntityType="Self.Consulta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Consultorio" EntityType="Self.Consultorio" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Datos_Paciente" EntityType="Self.Datos_Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enfermedad_Expediente" EntityType="Self.Enfermedad_Expediente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enfermedad_Familiar" EntityType="Self.Enfermedad_Familiar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
@@ -749,7 +716,6 @@
           <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paciente_Asociado" EntityType="Self.Paciente_Asociado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paciente_Dueño_Asociado" EntityType="Self.Paciente_Dueño_Asociado" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Paciente_Paciente_Asociado" EntityType="Self.Paciente_Paciente_Asociado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RegistrarCita" EntityType="Self.RegistrarCita" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Administrador_Tipo_Usuario" Association="Self.FK_Administrador_Tipo_Usuario">
@@ -859,10 +825,6 @@
           <AssociationSet Name="FK_Paciente_Dueño_Asociado_Paciente_Asociado" Association="Self.FK_Paciente_Dueño_Asociado_Paciente_Asociado">
             <End Role="Paciente_Asociado" EntitySet="Paciente_Asociado" />
             <End Role="Paciente_Dueño_Asociado" EntitySet="Paciente_Dueño_Asociado" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Paciente_Paciente_Asociado_Datos_Paciente" Association="Self.FK_Paciente_Paciente_Asociado_Datos_Paciente">
-            <End Role="Datos_Paciente" EntitySet="Datos_Paciente" />
-            <End Role="Paciente_Paciente_Asociado" EntitySet="Paciente_Paciente_Asociado" />
           </AssociationSet>
           <AssociationSet Name="FK_Paciente_Tipo_Usuario" Association="Self.FK_Paciente_Tipo_Usuario">
             <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
@@ -979,19 +941,6 @@
           <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta_Consultorio" FromRole="Consultorio" ToRole="Consulta" />
-        </EntityType>
-        <EntityType Name="Datos_Paciente">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="tipo_sangre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="recidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="contacto_emergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="parentesco" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Paciente_Paciente_Asociado" Relationship="Self.FK_Paciente_Paciente_Asociado_Datos_Paciente" FromRole="Datos_Paciente" ToRole="Paciente_Paciente_Asociado" />
         </EntityType>
         <EntityType Name="Enfermedad_Expediente">
           <Key>
@@ -1245,15 +1194,6 @@
           <NavigationProperty Name="Paciente" Relationship="Self.FK_Paciente_Dueño_Asociado_Paciente" FromRole="Paciente_Dueño_Asociado" ToRole="Paciente" />
           <NavigationProperty Name="Paciente_Asociado" Relationship="Self.FK_Paciente_Dueño_Asociado_Paciente_Asociado" FromRole="Paciente_Dueño_Asociado" ToRole="Paciente_Asociado" />
         </EntityType>
-        <EntityType Name="Paciente_Paciente_Asociado">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="ID_PACIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ID_PACIENTE_ASOCIADO" Type="Int32" Nullable="false" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Datos_Paciente" Relationship="Self.FK_Paciente_Paciente_Asociado_Datos_Paciente" FromRole="Paciente_Paciente_Asociado" ToRole="Datos_Paciente" />
-        </EntityType>
         <EntityType Name="RegistrarCita">
           <Key>
             <PropertyRef Name="id" />
@@ -1408,18 +1348,6 @@
             </Principal>
             <Dependent Role="RegistrarCita">
               <PropertyRef Name="ID_CONSULTA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Paciente_Paciente_Asociado_Datos_Paciente">
-          <End Role="Datos_Paciente" Type="Self.Datos_Paciente" Multiplicity="1" />
-          <End Role="Paciente_Paciente_Asociado" Type="Self.Paciente_Paciente_Asociado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Datos_Paciente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Paciente_Paciente_Asociado">
-              <PropertyRef Name="ID_PACIENTE_ASOCIADO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1673,7 +1601,6 @@
           <EntitySet Name="Compartir_Expediente" EntityType="Self.Compartir_Expediente" />
           <EntitySet Name="Consulta" EntityType="Self.Consulta" />
           <EntitySet Name="Consultorio" EntityType="Self.Consultorio" />
-          <EntitySet Name="Datos_Paciente" EntityType="Self.Datos_Paciente" />
           <EntitySet Name="Enfermedad_Expediente" EntityType="Self.Enfermedad_Expediente" />
           <EntitySet Name="Enfermedad_Familiar" EntityType="Self.Enfermedad_Familiar" />
           <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
@@ -1693,7 +1620,6 @@
           <EntitySet Name="Paciente" EntityType="Self.Paciente" />
           <EntitySet Name="Paciente_Asociado" EntityType="Self.Paciente_Asociado" />
           <EntitySet Name="Paciente_Dueño_Asociado" EntityType="Self.Paciente_Dueño_Asociado" />
-          <EntitySet Name="Paciente_Paciente_Asociado" EntityType="Self.Paciente_Paciente_Asociado" />
           <EntitySet Name="RegistrarCita" EntityType="Self.RegistrarCita" />
           <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" />
           <AssociationSet Name="FK_Administrador_Tipo_Usuario" Association="Self.FK_Administrador_Tipo_Usuario">
@@ -1739,10 +1665,6 @@
           <AssociationSet Name="FK_RegistrarCita_Consulta" Association="Self.FK_RegistrarCita_Consulta">
             <End Role="Consulta" EntitySet="Consulta" />
             <End Role="RegistrarCita" EntitySet="RegistrarCita" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Paciente_Paciente_Asociado_Datos_Paciente" Association="Self.FK_Paciente_Paciente_Asociado_Datos_Paciente">
-            <End Role="Datos_Paciente" EntitySet="Datos_Paciente" />
-            <End Role="Paciente_Paciente_Asociado" EntitySet="Paciente_Paciente_Asociado" />
           </AssociationSet>
           <AssociationSet Name="FK_Enfermedad_Expediente_Expediente" Association="Self.FK_Enfermedad_Expediente_Expediente">
             <End Role="Expediente" EntitySet="Expediente" />
@@ -1920,19 +1842,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="numero" ColumnName="numero" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Datos_Paciente">
-            <EntityTypeMapping TypeName="EMEPModel.Datos_Paciente">
-              <MappingFragment StoreEntitySet="Datos_Paciente">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
-                <ScalarProperty Name="tipo_sangre" ColumnName="tipo_sangre" />
-                <ScalarProperty Name="recidencia" ColumnName="recidencia" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="contacto_emergencia" ColumnName="contacto_emergencia" />
-                <ScalarProperty Name="parentesco" ColumnName="parentesco" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2161,15 +2070,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ID_PACIENTE_DUE" ColumnName="ID_PACIENTE_DUE" />
                 <ScalarProperty Name="ID_PACIENTE_ASO" ColumnName="ID_PACIENTE_ASO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Paciente_Paciente_Asociado">
-            <EntityTypeMapping TypeName="EMEPModel.Paciente_Paciente_Asociado">
-              <MappingFragment StoreEntitySet="Paciente_Paciente_Asociado">
-                <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
-                <ScalarProperty Name="ID_PACIENTE_ASOCIADO" ColumnName="ID_PACIENTE_ASOCIADO" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

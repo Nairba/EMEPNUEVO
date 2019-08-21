@@ -31,8 +31,8 @@ namespace EMEP.Models
         public string sexo { get; set; }
         public int estado { get; set; }
         public int ID_TIPO_USUARIO { get; set; }
-
         public string estado_String { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compartir_Expediente> Compartir_Expediente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -24,12 +24,11 @@ namespace EMEP.Models
         public string descripcion { get; set; }
         public int ID_CATEGORIA { get; set; }
         public int estado { get; set; }
+        public string estado_String { get; set; }
         public string reaccion { get; set; }
         public string observaciones { get; set; }
         public Nullable<int> ID_EXPEDIENTE { get; set; }
         public string img { get; set; }
-
-        public string estado_String { get; set; }
         public virtual Categoria_Alergia Categoria_Alergia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expediente_Alergia> Expediente_Alergia { get; set; }

@@ -34,8 +34,7 @@ namespace EMEP.Models
         public System.DateTime fecha { get; set; }
         public int estado { get; set; }
         public string ID_PACIENTE { get; set; }
-
-        public string estado_String { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Alcohol> Alcohol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -14,7 +14,7 @@ namespace EMEP.Controllers
     {
         private EMEPEntities db = new EMEPEntities();
         public static List<Paciente> listaPaciente = new List<Paciente>();
-
+        Paciente obj = null;
         // GET: Paciente
         public ActionResult Index()
         {
@@ -23,6 +23,20 @@ namespace EMEP.Controllers
                 ViewBag.Mensaje = TempData["mensaje"].ToString();
             }
             var paciente = db.Paciente.Include(p => p.Tipo_Usuario);
+            foreach (var pacientes in paciente)
+            {
+
+                if (pacientes.estado == 1)
+                {
+
+                    pacientes.estado_String = "Activo";
+                }
+                if (pacientes.estado == 2)
+                {
+                    pacientes.estado_String = "Inactivo";
+
+                }
+            }
             return View(paciente.ToList());
         }
 
@@ -62,13 +76,27 @@ namespace EMEP.Controllers
                 TempData["mensaje"] = "Especifique el Paciente.";
                 return RedirectToAction("Index");
             }
-            Paciente paciente = db.Paciente.Find(id);
-            if (paciente == null)
+            var paciente = db.Paciente.Where(x => x.cedula.Equals(id));
+            foreach (var item in paciente)
+            {
+                obj = item;
+                if (obj.estado == 1)
+                {
+
+                    obj.estado_String = "Activo";
+                }
+                if (obj.estado == 0)
+                {
+                    obj.estado_String = "Inactivo";
+                }
+            }
+
+            if (obj == null)
             {
                 TempData["mensaje"] = "No éxiste el Paciente.";
                 return RedirectToAction("Index");
             }
-            return View(paciente);
+            return View(obj);
         }
 
 
@@ -107,19 +135,26 @@ namespace EMEP.Controllers
         // GET: Paciente/Edit/5
         public ActionResult Edit(string id)
         {
+
             if (id == null)
             {
                 TempData["mensaje"] = "Especifique el Paciente.";
                 return RedirectToAction("Index");
             }
-            Paciente paciente = db.Paciente.Find(id);
-            if (paciente == null)
+            var paciente = db.Paciente.Where(x => x.cedula.Equals(id));
+            foreach (var item in paciente)
             {
-                TempData["mensaje"] = "No exite el Paciente.";
-                return RedirectToAction("Index");
+                obj = item;
+
+                if (item == null)
+                {
+                    TempData["mensaje"] = "No exite el Paciente.";
+                    return RedirectToAction("Index");
+                }
+                ViewBag.listaTipo = new SelectList(db.Tipo_Usuario, "id", "descripcion", obj.ID_TIPO_USUARIO);
+
             }
-            ViewBag.listaTipo = new SelectList(db.Tipo_Usuario, "id", "descripcion", paciente.ID_TIPO_USUARIO);
-            return View(paciente);
+            return View(obj);
         }
 
         // POST: Paciente/Edit/5
@@ -151,24 +186,28 @@ namespace EMEP.Controllers
                 TempData["mensaje"] = "Especifique el Paciente.";
                 return RedirectToAction("Index");
             }
-            Paciente paciente = db.Paciente.Find(id);
+            var paciente = db.Paciente.Where(x => x.cedula.Equals(id));
+            foreach (var item in paciente)
+            {
+                obj = item;
+            }
             if (paciente != null)
             {
-                if (paciente.estado == 1)
+                if (obj.estado == 1)
                 {
-                    paciente.estado_String = "Activo";
+                    obj.estado_String = "Activo";
                 }
                 else
                 {
-                    paciente.estado_String = "Inactivo";
+                    obj.estado_String = "Inactivo";
                 }
             }
-            if (paciente == null)
+            if (obj == null)
             {
                 TempData["mensaje"] = "No exite el Paciente.";
                 return RedirectToAction("Index");
             }
-            return View(paciente);
+            return View(obj);
         }
 
         // POST: Paciente/Delete/5
@@ -176,18 +215,23 @@ namespace EMEP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Paciente paciente = db.Paciente.Find(id);
-            if (paciente.estado == 0)
+            var paciente = db.Paciente.Where(x => x.cedula.Equals(id));
+            foreach (var item in paciente)
             {
-                paciente.estado = 1;
-            }
-            else
-            {
-                paciente.estado = 0;
+
+
+                if (item.estado == 0)
+                {
+                    item.estado = 1;
+                }
+                else
+                {
+                    item.estado = 0;
+                }
             }
             db.SaveChanges();
             TempData["mensaje"] = "Estado actualizado.";
-            return RedirectToAction("Index");
+            return RedirectToAction("Delete");
         }
 
         protected override void Dispose(bool disposing)

@@ -93,19 +93,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Datos_Paciente">
-      <EntityTypeMapping TypeName="EMEPModel.Datos_Paciente">
-        <MappingFragment StoreEntitySet="Datos_Paciente">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
-          <ScalarProperty Name="tipo_sangre" ColumnName="tipo_sangre" />
-          <ScalarProperty Name="recidencia" ColumnName="recidencia" />
-          <ScalarProperty Name="telefono" ColumnName="telefono" />
-          <ScalarProperty Name="contacto_emergencia" ColumnName="contacto_emergencia" />
-          <ScalarProperty Name="parentesco" ColumnName="parentesco" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Enfermedad_Expediente">
       <EntityTypeMapping TypeName="EMEPModel.Enfermedad_Expediente">
         <MappingFragment StoreEntitySet="Enfermedad_Expediente">
@@ -331,15 +318,6 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="ID_PACIENTE_DUE" ColumnName="ID_PACIENTE_DUE" />
           <ScalarProperty Name="ID_PACIENTE_ASO" ColumnName="ID_PACIENTE_ASO" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Paciente_Paciente_Asociado">
-      <EntityTypeMapping TypeName="EMEPModel.Paciente_Paciente_Asociado">
-        <MappingFragment StoreEntitySet="Paciente_Paciente_Asociado">
-          <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
-          <ScalarProperty Name="ID_PACIENTE_ASOCIADO" ColumnName="ID_PACIENTE_ASOCIADO" />
-          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

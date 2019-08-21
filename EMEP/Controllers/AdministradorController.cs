@@ -226,21 +226,21 @@ namespace EMEP.Controllers
                     {
                         Session["CorreoId"] = administradorDB.correo.ToString();
                         Session["Nombre"] = administradorDB.correo.ToString();
-                        TempData["mensaje"] = "Bienvenid@";
+                        //TempData["mensaje"] = "Bienvenid@";
                         return RedirectToAction("IndexAd", "Home");
                     }
                     if (medicoDB != null && medicoDB.estado == 1)
                     {
                         Session["CorreoId"] = medicoDB.correo.ToString();
                         Session["Nombre"] = medicoDB.nombre.ToString();
-                        TempData["mensaje"] = "Bienvenid@";
+                        //TempData["mensaje"] = "Bienvenid@";
                         return RedirectToAction("IndexMed", "Home");
                     }
                     if (pacienteDB != null && pacienteDB.estado == 1)
                     {
                         Session["CorreoId"] = pacienteDB.correo.ToString();
                         Session["Nombre"] = pacienteDB.nombre.ToString();
-                        TempData["mensaje"] = "Bienvenid@";
+                        //TempData["mensaje"] = "Bienvenid@";
                         return RedirectToAction("IndexAC", "Home");
                     }
                 }

@@ -19,8 +19,8 @@ namespace EMEP.Models
         public string ID_PACIENTE { get; set; }
         public int estado { get; set; }
         public string ID_PACIENTE_COMPARTE { get; set; }
-
         public string estado_String { get; set; }
+
         public virtual Paciente Paciente { get; set; }
     }
 }

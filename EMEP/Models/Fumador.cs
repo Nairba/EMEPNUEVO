@@ -20,8 +20,8 @@ namespace EMEP.Models
         public Nullable<int> tiempo { get; set; }
         public string observaciones { get; set; }
         public int ID_EXPEDIENTE { get; set; }
-
         public string estado_String { get; set; }
+
         public virtual Expediente Expediente { get; set; }
     }
 }
