@@ -1,0 +1,51 @@
+﻿@model EMEP.Models.Compartir_Expediente
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPa.cshtml";
+}
+
+<h2>Detalles Compartidos</h2>
+
+<div>
+    <h4>Expediente Compartidos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_EXPEDIENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_EXPEDIENTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_PACIENTE_COMPARTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_PACIENTE_COMPARTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paciente.cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.cedula)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

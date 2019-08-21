@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EMEP.Models.Compartir_Expediente>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPa.cshtml";
+}
+
+<h2>Lista de Compartidos</h2>
+
+<p>
+    @Html.ActionLink("Compartir Expediente", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_EXPEDIENTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_PACIENTE_COMPARTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paciente.cedula)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_EXPEDIENTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_PACIENTE_COMPARTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paciente.cedula)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id }) |
+            @Html.ActionLink("Cambiar Estado", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

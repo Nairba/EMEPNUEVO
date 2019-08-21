@@ -18,6 +18,10 @@ namespace EMEP.Controllers
         // GET: Paciente
         public ActionResult Index()
         {
+            if (TempData.ContainsKey("mensaje"))
+            {
+                ViewBag.Mensaje = TempData["mensaje"].ToString();
+            }
             var paciente = db.Paciente.Include(p => p.Tipo_Usuario);
             return View(paciente.ToList());
         }
@@ -27,8 +31,8 @@ namespace EMEP.Controllers
 
             string correoSesion = Session["CorreoId"].ToString();
             var pacientes = from m in db.Paciente
-                          where m.correo == correoSesion
-                          select m;
+                            where m.correo == correoSesion
+                            select m;
 
             foreach (var paciente in pacientes)
             {
@@ -55,17 +59,19 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["mensaje"] = "Especifique el Paciente.";
+                return RedirectToAction("Index");
             }
             Paciente paciente = db.Paciente.Find(id);
             if (paciente == null)
             {
-                return HttpNotFound();
+                TempData["mensaje"] = "No éxiste el Paciente.";
+                return RedirectToAction("Index");
             }
             return View(paciente);
         }
 
-      
+
         // GET: Paciente/Create
         public ActionResult Create()
         {
@@ -78,21 +84,24 @@ namespace EMEP.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Paciente paciente)
+        public ActionResult Create(Paciente paciente)
         {
-            if (ModelState.IsValid)
+            try
             {
 
-                listaPaciente.Add(paciente);
+                //listaPaciente.Add(paciente);
+                paciente.ID_TIPO_USUARIO = 3;
                 db.Paciente.Add(paciente);
-              
+                TempData["mensaje"] = "Paciente guardado con éxito.";
                 db.SaveChanges();
-                return RedirectToAction("Create");
-                
-            }
+                return RedirectToAction("index");
 
-            ViewBag.listaTipo = new SelectList(db.Tipo_Usuario, "id", "descripcion", paciente.ID_TIPO_USUARIO);
-            return View(paciente);
+            }
+            catch
+            {
+                ViewBag.listaTipo = new SelectList(db.Tipo_Usuario, "id", "descripcion", paciente.ID_TIPO_USUARIO);
+                return View(paciente);
+            }
         }
 
         // GET: Paciente/Edit/5
@@ -100,12 +109,14 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["mensaje"] = "Especifique el Paciente.";
+                return RedirectToAction("Index");
             }
             Paciente paciente = db.Paciente.Find(id);
             if (paciente == null)
             {
-                return HttpNotFound();
+                TempData["mensaje"] = "No exite el Paciente.";
+                return RedirectToAction("Index");
             }
             ViewBag.listaTipo = new SelectList(db.Tipo_Usuario, "id", "descripcion", paciente.ID_TIPO_USUARIO);
             return View(paciente);
@@ -118,14 +129,18 @@ namespace EMEP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Paciente paciente)
         {
-            if (ModelState.IsValid)
+            try
             {
                 db.Entry(paciente).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["mensaje"] = "Paciente Actualizado.";
                 return RedirectToAction("Index");
             }
-            ViewBag.listaTipo = new SelectList(db.Tipo_Usuario, "id", "descripcion", paciente.ID_TIPO_USUARIO);
-            return View(paciente);
+            catch
+            {
+                ViewBag.listaTipo = new SelectList(db.Tipo_Usuario, "id", "descripcion", paciente.ID_TIPO_USUARIO);
+                return View(paciente);
+            }
         }
 
         // GET: Paciente/Delete/5
@@ -133,12 +148,25 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["mensaje"] = "Especifique el Paciente.";
+                return RedirectToAction("Index");
             }
             Paciente paciente = db.Paciente.Find(id);
+            if (paciente != null)
+            {
+                if (paciente.estado == 1)
+                {
+                    paciente.estado_String = "Activo";
+                }
+                else
+                {
+                    paciente.estado_String = "Inactivo";
+                }
+            }
             if (paciente == null)
             {
-                return HttpNotFound();
+                TempData["mensaje"] = "No exite el Paciente.";
+                return RedirectToAction("Index");
             }
             return View(paciente);
         }
@@ -149,8 +177,16 @@ namespace EMEP.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             Paciente paciente = db.Paciente.Find(id);
-            db.Paciente.Remove(paciente);
+            if (paciente.estado == 0)
+            {
+                paciente.estado = 1;
+            }
+            else
+            {
+                paciente.estado = 0;
+            }
             db.SaveChanges();
+            TempData["mensaje"] = "Estado actualizado.";
             return RedirectToAction("Index");
         }
 
@@ -163,6 +199,6 @@ namespace EMEP.Controllers
             base.Dispose(disposing);
         }
 
-        
+
     }
 }

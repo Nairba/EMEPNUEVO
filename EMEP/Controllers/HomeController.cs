@@ -20,6 +20,10 @@ namespace EMEP.Controllers
         {
             return View();
         }
+        public ActionResult IndexPa()
+        {
+            return View();
+        }
 
         public ActionResult About()
         {

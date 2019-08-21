@@ -1,0 +1,56 @@
+﻿@model EMEP.Models.Compartir_Expediente
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPa.cshtml";
+}
+
+<h2>Cambiar Estado</h2>
+
+<div>
+    <h4>Expediente Compartido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_EXPEDIENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_EXPEDIENTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_PACIENTE_COMPARTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_PACIENTE_COMPARTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paciente.cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.cedula)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Cambiar Estado" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>
