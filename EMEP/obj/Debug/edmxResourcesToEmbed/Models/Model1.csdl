@@ -86,19 +86,6 @@
     <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta_Consultorio" FromRole="Consultorio" ToRole="Consulta" />
   </EntityType>
-  <EntityType Name="Datos_Paciente">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="tipo_sangre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="recidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="contacto_emergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="parentesco" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Paciente_Paciente_Asociado" Relationship="Self.FK_Paciente_Paciente_Asociado_Datos_Paciente" FromRole="Datos_Paciente" ToRole="Paciente_Paciente_Asociado" />
-  </EntityType>
   <EntityType Name="Enfermedad_Expediente">
     <Key>
       <PropertyRef Name="id" />
@@ -195,7 +182,7 @@
     <Property Name="minutos" Type="Int32" />
     <Property Name="cant_veces" Type="Int32" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" Nullable="false" />
-    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="Binary" />
     <NavigationProperty Name="Expediente" Relationship="Self.FK_Lista_Actividad_Fisica_Expediente" FromRole="Lista_Actividad_Fisica" ToRole="Expediente" />
   </EntityType>
   <EntityType Name="Lista_Alergia">
@@ -222,7 +209,7 @@
     <Property Name="ID_CATEGORIA" Type="Int32" Nullable="false" />
     <Property Name="estado" Type="Int32" Nullable="false" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
-    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="Binary" Nullable="false" />
     <NavigationProperty Name="Categoria" Relationship="Self.FK_Lista_Enfermedad_Categoria" FromRole="Lista_Enfermedad" ToRole="Categoria" />
     <NavigationProperty Name="Enfermedad_Expediente" Relationship="Self.FK_Enfermedad_Expediente_Lista_Enfermedad" FromRole="Lista_Enfermedad" ToRole="Enfermedad_Expediente" />
     <NavigationProperty Name="Enfermedad_Familiar" Relationship="Self.FK_Enfermedad_Familiar_Lista_Enfermedad" FromRole="Lista_Enfermedad" ToRole="Enfermedad_Familiar" />
@@ -264,7 +251,7 @@
     <Property Name="minutos" Type="Int32" />
     <Property Name="cant_veces" Type="Int32" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
-    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="Binary" />
     <NavigationProperty Name="Expediente" Relationship="EMEPModel.FK_Otra_Actividad_Expediente" FromRole="Otra_Actividad" ToRole="Expediente" />
   </EntityType>
   <EntityType Name="Otra_Alergia">
@@ -276,7 +263,7 @@
     <Property Name="estado" Type="Int32" />
     <Property Name="reaccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="Binary" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
     <Property Name="ID_CATEGORIA" Type="Int32" />
     <NavigationProperty Name="Expediente" Relationship="EMEPModel.FK_Otra_Alergia_Expediente" FromRole="Otra_Alergia" ToRole="Expediente" />
@@ -289,7 +276,7 @@
     <Property Name="descripciom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="estado" Type="Int32" />
-    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
     <NavigationProperty Name="Expediente" Relationship="EMEPModel.FK_Otra_Enfermedad_Expediente" FromRole="Otra_Enfermedad" ToRole="Expediente" />
   </EntityType>
@@ -308,18 +295,8 @@
     <Property Name="ID_TIPO_USUARIO" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Compartir_Expediente" Relationship="Self.FK_Compartir_Expediente_Paciente" FromRole="Paciente" ToRole="Compartir_Expediente" />
     <NavigationProperty Name="Expediente" Relationship="Self.FK_Expediente_Paciente" FromRole="Paciente" ToRole="Expediente" />
-    <NavigationProperty Name="Paciente_Paciente_Asociado" Relationship="Self.FK_Paciente_Paciente_Asociado_Paciente" FromRole="Paciente" ToRole="Paciente_Paciente_Asociado" />
     <NavigationProperty Name="Tipo_Usuario" Relationship="Self.FK_Paciente_Tipo_Usuario" FromRole="Paciente" ToRole="Tipo_Usuario" />
-  </EntityType>
-  <EntityType Name="Paciente_Paciente_Asociado">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="ID_PACIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ID_PACIENTE_ASOCIADO" Type="Int32" Nullable="false" />
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="Datos_Paciente" Relationship="Self.FK_Paciente_Paciente_Asociado_Datos_Paciente" FromRole="Paciente_Paciente_Asociado" ToRole="Datos_Paciente" />
-    <NavigationProperty Name="Paciente" Relationship="Self.FK_Paciente_Paciente_Asociado_Paciente" FromRole="Paciente_Paciente_Asociado" ToRole="Paciente" />
+    <NavigationProperty Name="Paciente_Dueño_Asociado" Relationship="EMEPModel.FK_Paciente_Dueño_Asociado_Paciente" FromRole="Paciente" ToRole="Paciente_Dueño_Asociado" />
   </EntityType>
   <EntityType Name="Tipo_Usuario">
     <Key>
@@ -330,6 +307,7 @@
     <NavigationProperty Name="Administrador" Relationship="Self.FK_Administrador_Tipo_Usuario" FromRole="Tipo_Usuario" ToRole="Administrador" />
     <NavigationProperty Name="Medico" Relationship="Self.FK_Usuario_Tipo_Usuario" FromRole="Tipo_Usuario" ToRole="Medico" />
     <NavigationProperty Name="Paciente" Relationship="Self.FK_Paciente_Tipo_Usuario" FromRole="Tipo_Usuario" ToRole="Paciente" />
+    <NavigationProperty Name="Paciente_Asociado" Relationship="EMEPModel.FK_Paciente_Asociado_Tipo_Usuario" FromRole="Tipo_Usuario" ToRole="Paciente_Asociado" />
   </EntityType>
   <Association Name="FK_Administrador_Tipo_Usuario">
     <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1" />
@@ -436,18 +414,6 @@
       </Principal>
       <Dependent Role="Consulta">
         <PropertyRef Name="ID_MEDICO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Paciente_Paciente_Asociado_Datos_Paciente">
-    <End Role="Datos_Paciente" Type="Self.Datos_Paciente" Multiplicity="1" />
-    <End Role="Paciente_Paciente_Asociado" Type="Self.Paciente_Paciente_Asociado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Datos_Paciente">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Paciente_Paciente_Asociado">
-        <PropertyRef Name="ID_PACIENTE_ASOCIADO" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -583,18 +549,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Paciente_Paciente_Asociado_Paciente">
-    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
-    <End Role="Paciente_Paciente_Asociado" Type="Self.Paciente_Paciente_Asociado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Paciente">
-        <PropertyRef Name="correo" />
-      </Principal>
-      <Dependent Role="Paciente_Paciente_Asociado">
-        <PropertyRef Name="ID_PACIENTE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Paciente_Tipo_Usuario">
     <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1" />
     <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
@@ -616,7 +570,6 @@
     <EntitySet Name="Compartir_Expediente" EntityType="Self.Compartir_Expediente" />
     <EntitySet Name="Consulta" EntityType="Self.Consulta" />
     <EntitySet Name="Consultorio" EntityType="Self.Consultorio" />
-    <EntitySet Name="Datos_Paciente" EntityType="Self.Datos_Paciente" />
     <EntitySet Name="Enfermedad_Expediente" EntityType="Self.Enfermedad_Expediente" />
     <EntitySet Name="Enfermedad_Familiar" EntityType="Self.Enfermedad_Familiar" />
     <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
@@ -633,7 +586,6 @@
     <EntitySet Name="Otra_Alergia" EntityType="Self.Otra_Alergia" />
     <EntitySet Name="Otra_Enfermedad" EntityType="Self.Otra_Enfermedad" />
     <EntitySet Name="Paciente" EntityType="Self.Paciente" />
-    <EntitySet Name="Paciente_Paciente_Asociado" EntityType="Self.Paciente_Paciente_Asociado" />
     <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" />
     <AssociationSet Name="FK_Administrador_Tipo_Usuario" Association="Self.FK_Administrador_Tipo_Usuario">
       <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
@@ -670,10 +622,6 @@
     <AssociationSet Name="FK_Consulta_Medico" Association="Self.FK_Consulta_Medico">
       <End Role="Medico" EntitySet="Medico" />
       <End Role="Consulta" EntitySet="Consulta" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Paciente_Paciente_Asociado_Datos_Paciente" Association="Self.FK_Paciente_Paciente_Asociado_Datos_Paciente">
-      <End Role="Datos_Paciente" EntitySet="Datos_Paciente" />
-      <End Role="Paciente_Paciente_Asociado" EntitySet="Paciente_Paciente_Asociado" />
     </AssociationSet>
     <AssociationSet Name="FK_Enfermedad_Expediente_Expediente" Association="Self.FK_Enfermedad_Expediente_Expediente">
       <End Role="Expediente" EntitySet="Expediente" />
@@ -719,10 +667,6 @@
       <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
       <End Role="Medico" EntitySet="Medico" />
     </AssociationSet>
-    <AssociationSet Name="FK_Paciente_Paciente_Asociado_Paciente" Association="Self.FK_Paciente_Paciente_Asociado_Paciente">
-      <End Role="Paciente" EntitySet="Paciente" />
-      <End Role="Paciente_Paciente_Asociado" EntitySet="Paciente_Paciente_Asociado" />
-    </AssociationSet>
     <AssociationSet Name="FK_Paciente_Tipo_Usuario" Association="Self.FK_Paciente_Tipo_Usuario">
       <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
       <End Role="Paciente" EntitySet="Paciente" />
@@ -758,6 +702,20 @@
     <AssociationSet Name="FK_ListaCita_RegistrarCita" Association="EMEPModel.FK_ListaCita_RegistrarCita">
       <End Role="RegistrarCita" EntitySet="RegistrarCita" />
       <End Role="ListaCita" EntitySet="ListaCita" />
+    </AssociationSet>
+    <EntitySet Name="Paciente_Asociado" EntityType="EMEPModel.Paciente_Asociado" />
+    <EntitySet Name="Paciente_Dueño_Asociado" EntityType="EMEPModel.Paciente_Dueño_Asociado" />
+    <AssociationSet Name="FK_Paciente_Dueño_Asociado_Paciente" Association="EMEPModel.FK_Paciente_Dueño_Asociado_Paciente">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="Paciente_Dueño_Asociado" EntitySet="Paciente_Dueño_Asociado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paciente_Asociado_Tipo_Usuario" Association="EMEPModel.FK_Paciente_Asociado_Tipo_Usuario">
+      <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+      <End Role="Paciente_Asociado" EntitySet="Paciente_Asociado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paciente_Dueño_Asociado_Paciente_Asociado" Association="EMEPModel.FK_Paciente_Dueño_Asociado_Paciente_Asociado">
+      <End Role="Paciente_Asociado" EntitySet="Paciente_Asociado" />
+      <End Role="Paciente_Dueño_Asociado" EntitySet="Paciente_Dueño_Asociado" />
     </AssociationSet>
   </EntityContainer>
   <Association Name="FK_Otra_Actividad_Expediente">
@@ -882,6 +840,74 @@
       </Principal>
       <Dependent Role="ListaCita">
         <PropertyRef Name="idRegistrarCita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Paciente_Asociado">
+    <Key>
+      <PropertyRef Name="correo" />
+    </Key>
+    <Property Name="correo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cedula" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="p_Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="s_Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contrasenna" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sexo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tipo_sangre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="recidencia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telefono" Type="Int32" Nullable="false" />
+    <Property Name="contacto_emergencia" Type="Int32" Nullable="false" />
+    <Property Name="parentesco" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_TIPO_USUARIO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Tipo_Usuario" Relationship="EMEPModel.FK_Paciente_Asociado_Tipo_Usuario" FromRole="Paciente_Asociado" ToRole="Tipo_Usuario" />
+    <NavigationProperty Name="Paciente_Dueño_Asociado" Relationship="EMEPModel.FK_Paciente_Dueño_Asociado_Paciente_Asociado" FromRole="Paciente_Asociado" ToRole="Paciente_Dueño_Asociado" />
+  </EntityType>
+  <EntityType Name="Paciente_Dueño_Asociado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="ID_PACIENTE_DUE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_PACIENTE_ASO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Paciente" Relationship="EMEPModel.FK_Paciente_Dueño_Asociado_Paciente" FromRole="Paciente_Dueño_Asociado" ToRole="Paciente" />
+    <NavigationProperty Name="Paciente_Asociado" Relationship="EMEPModel.FK_Paciente_Dueño_Asociado_Paciente_Asociado" FromRole="Paciente_Dueño_Asociado" ToRole="Paciente_Asociado" />
+  </EntityType>
+  <Association Name="FK_Paciente_Dueño_Asociado_Paciente">
+    <End Type="EMEPModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="EMEPModel.Paciente_Dueño_Asociado" Role="Paciente_Dueño_Asociado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="Paciente_Dueño_Asociado">
+        <PropertyRef Name="ID_PACIENTE_DUE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paciente_Asociado_Tipo_Usuario">
+    <End Type="EMEPModel.Tipo_Usuario" Role="Tipo_Usuario" Multiplicity="1" />
+    <End Type="EMEPModel.Paciente_Asociado" Role="Paciente_Asociado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Paciente_Asociado">
+        <PropertyRef Name="ID_TIPO_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paciente_Dueño_Asociado_Paciente_Asociado">
+    <End Type="EMEPModel.Paciente_Asociado" Role="Paciente_Asociado" Multiplicity="1" />
+    <End Type="EMEPModel.Paciente_Dueño_Asociado" Role="Paciente_Dueño_Asociado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente_Asociado">
+        <PropertyRef Name="correo" />
+      </Principal>
+      <Dependent Role="Paciente_Dueño_Asociado">
+        <PropertyRef Name="ID_PACIENTE_ASO" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
