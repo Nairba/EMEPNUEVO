@@ -1,0 +1,66 @@
+﻿@model EMEP.Models.Datos_Paciente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Datos_Paciente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_nacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_nacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_sangre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_sangre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recidencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recidencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contacto_emergencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contacto_emergencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parentesco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parentesco)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
