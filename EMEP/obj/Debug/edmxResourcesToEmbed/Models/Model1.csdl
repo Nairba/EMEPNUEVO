@@ -182,7 +182,7 @@
     <Property Name="minutos" Type="Int32" />
     <Property Name="cant_veces" Type="Int32" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" Nullable="false" />
-    <Property Name="img" Type="Binary" />
+    <Property Name="img" Type="Byte" />
     <NavigationProperty Name="Expediente" Relationship="Self.FK_Lista_Actividad_Fisica_Expediente" FromRole="Lista_Actividad_Fisica" ToRole="Expediente" />
   </EntityType>
   <EntityType Name="Lista_Alergia">
@@ -209,7 +209,7 @@
     <Property Name="ID_CATEGORIA" Type="Int32" Nullable="false" />
     <Property Name="estado" Type="Int32" Nullable="false" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
-    <Property Name="img" Type="Binary" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Nullable="false" />
     <NavigationProperty Name="Categoria" Relationship="Self.FK_Lista_Enfermedad_Categoria" FromRole="Lista_Enfermedad" ToRole="Categoria" />
     <NavigationProperty Name="Enfermedad_Expediente" Relationship="Self.FK_Enfermedad_Expediente_Lista_Enfermedad" FromRole="Lista_Enfermedad" ToRole="Enfermedad_Expediente" />
     <NavigationProperty Name="Enfermedad_Familiar" Relationship="Self.FK_Enfermedad_Familiar_Lista_Enfermedad" FromRole="Lista_Enfermedad" ToRole="Enfermedad_Familiar" />
@@ -251,7 +251,7 @@
     <Property Name="minutos" Type="Int32" />
     <Property Name="cant_veces" Type="Int32" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
-    <Property Name="img" Type="Binary" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Expediente" Relationship="EMEPModel.FK_Otra_Actividad_Expediente" FromRole="Otra_Actividad" ToRole="Expediente" />
   </EntityType>
   <EntityType Name="Otra_Alergia">
@@ -263,7 +263,7 @@
     <Property Name="estado" Type="Int32" />
     <Property Name="reaccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="img" Type="Binary" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
     <Property Name="ID_CATEGORIA" Type="Int32" />
     <NavigationProperty Name="Expediente" Relationship="EMEPModel.FK_Otra_Alergia_Expediente" FromRole="Otra_Alergia" ToRole="Expediente" />

@@ -17,6 +17,10 @@ namespace EMEP.Controllers
         // GET: Medico
         public ActionResult Index()
         {
+            if (TempData.ContainsKey("mensaje"))
+            {
+                ViewBag.Mensaje = TempData["mensaje"].ToString();
+            }
             var medicos = db.Medico.Include(m => m.Tipo_Usuario);
 
             foreach (var medico in medicos)
@@ -35,6 +39,10 @@ namespace EMEP.Controllers
         }
         public ActionResult IndexMe()
         {
+            if (TempData.ContainsKey("mensaje"))
+            {
+                ViewBag.Mensaje = TempData["mensaje"].ToString();
+            }
 
             string correoSesion = Session["CorreoId"].ToString();
             var medicos = from m in db.Medico
@@ -67,7 +75,8 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["mensaje"] = "Especifique el medico.";
+                return RedirectToAction("Index");
             }
             Medico medico = db.Medico.Find(id);
             if (medico.estado == 1)
@@ -81,7 +90,8 @@ namespace EMEP.Controllers
             }
             if (medico == null)
             {
-                return HttpNotFound();
+                TempData["mensaje"] = "Medico no encotrado.";
+                return RedirectToAction("Index");
             }
             return View(medico);
         }
@@ -90,7 +100,8 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["mensaje"] = "Especifique el medico.";
+                return RedirectToAction("Index");
             }
             Medico medico = db.Medico.Find(id);
             if (medico.estado == 1)
@@ -104,7 +115,8 @@ namespace EMEP.Controllers
             }
             if (medico == null)
             {
-                return HttpNotFound();
+                TempData["mensaje"] = "Medico no encontrado.";
+                return RedirectToAction("Index");
             }
             return View(medico);
         }
@@ -129,6 +141,7 @@ namespace EMEP.Controllers
             {
                 db.Medico.Add(medico);
                 db.SaveChanges();
+                TempData["mensaje"] = "Guardado con éxito";
                 return RedirectToAction("Index");
             }
 
@@ -142,12 +155,13 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["mensaje"] = "Especifique el medico.";
             }
             Medico medico = db.Medico.Find(id);
             if (medico == null)
             {
-                return HttpNotFound();
+
+                TempData["mensaje"] = "Medico no encontrado.";
             }
             ViewBag.ID_TIPO_USUARIO = new SelectList(db.Tipo_Usuario, "id", "descripcion", medico.ID_TIPO_USUARIO);
             return View(medico);
@@ -164,6 +178,8 @@ namespace EMEP.Controllers
             {
                 db.Entry(medico).State = EntityState.Modified;
                 db.SaveChanges();
+
+                TempData["mensaje"] = "Actualizado con éxito.";
                 return RedirectToAction("Index");
             }
             ViewBag.ID_TIPO_USUARIO = new SelectList(db.Tipo_Usuario, "id", "descripcion", medico.ID_TIPO_USUARIO);
@@ -175,12 +191,14 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                TempData["mensaje"] = "Especifique el medico.";
             }
             Medico medico = db.Medico.Find(id);
             if (medico == null)
             {
-                return HttpNotFound();
+
+                TempData["mensaje"] = "Medico no entontrado.";
             }
             ViewBag.ID_TIPO_USUARIO = new SelectList(db.Tipo_Usuario, "id", "descripcion", medico.ID_TIPO_USUARIO);
             return View(medico);
@@ -197,6 +215,7 @@ namespace EMEP.Controllers
             {
                 db.Entry(medico).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["mensaje"] = "Actualizado con éxito.";
                 return RedirectToAction("IndexMe");
             }
             ViewBag.ID_TIPO_USUARIO = new SelectList(db.Tipo_Usuario, "id", "descripcion", medico.ID_TIPO_USUARIO);
@@ -208,12 +227,14 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                TempData["mensaje"] = "Especifique el medico.";
             }
             Medico medico = db.Medico.Find(id);
             if (medico == null)
             {
-                return HttpNotFound();
+
+                TempData["mensaje"] = "Medico no encontrado.";
             }
             return View(medico);
         }
@@ -224,8 +245,17 @@ namespace EMEP.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Medico medico = db.Medico.Find(id);
-            db.Medico.Remove(medico);
+            if (medico.estado == 1)
+            {
+                medico.estado = 0;
+
+            }
+            else
+            {
+                medico.estado = 1;
+            }
             db.SaveChanges();
+            TempData["mensaje"] = "Estado Actualizado.";
             return RedirectToAction("Index");
         }
 

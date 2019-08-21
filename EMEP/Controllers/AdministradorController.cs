@@ -13,10 +13,13 @@ namespace EMEP.Controllers
     public class AdministradorController : Controller
     {
         private EMEPEntities db = new EMEPEntities();
-        // GET: Administrador controler
+        // GET: Administrador
         public ActionResult Index()
         {
-
+            if (TempData.ContainsKey("mensaje"))
+            {
+                ViewBag.Mensaje = TempData["mensaje"].ToString();
+            }
             var administrador = db.Administrador.Include(a => a.Tipo_Usuario);
             foreach (var item in administrador)
             {
@@ -39,7 +42,8 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["mensaje"] = "Especifique la Administrador.";
+                return RedirectToAction("Index");
             }
             Administrador administrador = db.Administrador.Find(id);
             if (administrador.estado == 1)
@@ -54,7 +58,8 @@ namespace EMEP.Controllers
             }
             if (administrador == null)
             {
-                return HttpNotFound();
+                TempData["mensaje"] = "Administrador no encontrado.";
+                return RedirectToAction("Index");
             }
             return View(administrador);
         }
@@ -74,29 +79,47 @@ namespace EMEP.Controllers
         public ActionResult Create(Administrador administrador)
         {
             
-            if (ModelState.IsValid)
+            try
             {
                 administrador.estado = 1;
                 db.Administrador.Add(administrador);
                 db.SaveChanges();
+                TempData["mensaje"] = "Guardado con éxito.";
                 return RedirectToAction("Index");
             }
+            catch
+            {
+                ViewBag.ID_TIPO_USUARIO = new SelectList(db.Tipo_Usuario, "id", "descripcion", administrador.ID_TIPO_USUARIO);
+                return View(administrador);
+            }
 
-            ViewBag.ID_TIPO_USUARIO = new SelectList(db.Tipo_Usuario, "id", "descripcion", administrador.ID_TIPO_USUARIO);
-            return View(administrador);
+           
         }
 
         // GET: Administrador/Edit/5
         public ActionResult Edit(int? id)
         {
+
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["mensaje"] = "Especifique la Administrador.";
+                return RedirectToAction("Index");
             }
             Administrador administrador = db.Administrador.Find(id);
+            if (administrador.estado == 1)
+            {
+
+                administrador.estado_String = "Activo";
+            }
+            if (administrador.estado == 0)
+            {
+
+                administrador.estado_String = "Inactivo";
+            }
             if (administrador == null)
             {
-                return HttpNotFound();
+                TempData["mensaje"] = "Administrador no encontrado.";
+                return RedirectToAction("Index");
             }
             ViewBag.ID_TIPO_USUARIO = new SelectList(db.Tipo_Usuario, "id", "descripcion", administrador.ID_TIPO_USUARIO);
             return View(administrador);
@@ -109,27 +132,45 @@ namespace EMEP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Administrador administrador)
         {
-            if (ModelState.IsValid)
+           try
             {
                 db.Entry(administrador).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["mensaje"] = "Actualizado con éxito.";
                 return RedirectToAction("Index");
             }
-            ViewBag.ID_TIPO_USUARIO = new SelectList(db.Tipo_Usuario, "id", "descripcion", administrador.ID_TIPO_USUARIO);
-            return View(administrador);
+            catch
+            {
+                ViewBag.ID_TIPO_USUARIO = new SelectList(db.Tipo_Usuario, "id", "descripcion", administrador.ID_TIPO_USUARIO);
+                return View(administrador);
+            }
+
         }
+           
 
         // GET: Administrador/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["mensaje"] = "Especifique la Administrador.";
+                return RedirectToAction("Index");
             }
             Administrador administrador = db.Administrador.Find(id);
+            if (administrador.estado == 1)
+            {
+
+                administrador.estado_String = "Activo";
+            }
+            if (administrador.estado == 0)
+            {
+
+                administrador.estado_String = "Inactivo";
+            }
             if (administrador == null)
             {
-                return HttpNotFound();
+                TempData["mensaje"] = "Administrador no encontrado.";
+                return RedirectToAction("Index");
             }
             return View(administrador);
         }
@@ -149,8 +190,8 @@ namespace EMEP.Controllers
             {
                 administrador.estado = 0;
             }
-            db.Administrador.Remove(administrador);
             db.SaveChanges();
+            TempData["mensaje"] = "Estado actualizado.";
             return RedirectToAction("Index");
         }
 
