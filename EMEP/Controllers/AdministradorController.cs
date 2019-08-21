@@ -19,7 +19,7 @@ namespace EMEP.Controllers
             if (TempData.ContainsKey("mensaje"))
             {
                 ViewBag.Mensaje = TempData["mensaje"].ToString();
-            }
+            }   
             var administrador = db.Administrador.Include(a => a.Tipo_Usuario);
             foreach (var item in administrador)
             {

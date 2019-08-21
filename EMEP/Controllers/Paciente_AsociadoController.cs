@@ -13,10 +13,11 @@ namespace EMEP.Controllers
     public class Paciente_AsociadoController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        
         // GET: Paciente_Asociado
         public ActionResult Index()
         {
+           
             return View(db.Paciente_Asociado.ToList());
         }
 
@@ -38,6 +39,41 @@ namespace EMEP.Controllers
         // GET: Paciente_Asociado/Create
         public ActionResult Create()
         {
+            List<SelectListItem> sexolist = new List<SelectListItem>();
+            sexolist.Add(new SelectListItem() { Text = "Masculino", Value = "1" });
+            sexolist.Add(new SelectListItem() { Text = "Femenino", Value = "2" });
+            sexolist.Add(new SelectListItem() { Text = "Complicado", Value = "3" });
+            ViewBag.Opcion = sexolist;
+
+            List<SelectListItem> estadoList = new List<SelectListItem>();
+            estadoList.Add(new SelectListItem() { Text = "Inactivo", Value = "0" });
+            estadoList.Add(new SelectListItem() { Text = "Activo", Value = "1" });
+            ViewBag.Opcion2 = estadoList;
+
+            List<SelectListItem> tipoSangreList = new List<SelectListItem>();
+            tipoSangreList.Add(new SelectListItem() { Text = "O-", Value = "1" });
+            tipoSangreList.Add(new SelectListItem() { Text = "O+", Value = "2" });
+            tipoSangreList.Add(new SelectListItem() { Text = "A-", Value = "3" });
+            tipoSangreList.Add(new SelectListItem() { Text = "A+", Value = "4" });
+            tipoSangreList.Add(new SelectListItem() { Text = "B-", Value = "5" });
+            tipoSangreList.Add(new SelectListItem() { Text = "B+", Value = "6" });
+            tipoSangreList.Add(new SelectListItem() { Text = "AB-", Value = "7" });
+            tipoSangreList.Add(new SelectListItem() { Text = "AB+", Value = "8" });
+            tipoSangreList.Add(new SelectListItem() { Text = "Sin definir", Value = "9" });
+            ViewBag.Opcion3 = tipoSangreList;
+
+            List<SelectListItem> parentescoList = new List<SelectListItem>();
+
+            parentescoList.Add(new SelectListItem() { Text = "Padre", Value = "1" });
+            parentescoList.Add(new SelectListItem() { Text = "Madre", Value = "2" });
+            parentescoList.Add(new SelectListItem() { Text = "Hermano", Value = "3" });
+            parentescoList.Add(new SelectListItem() { Text = "Hermana", Value = "4" });
+            parentescoList.Add(new SelectListItem() { Text = "Hijo", Value = "5" });
+            parentescoList.Add(new SelectListItem() { Text = "Hija", Value = "6" });
+            parentescoList.Add(new SelectListItem() { Text = "Esposa", Value = "7" });
+            parentescoList.Add(new SelectListItem() { Text = "Esposo", Value = "8" });
+            ViewBag.Opcion4 = parentescoList;
+
             return View();
         }
 
@@ -46,16 +82,28 @@ namespace EMEP.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "correo,cedula,nombre,p_Apellido,s_Apellido,contrasenna,sexo,estado,estad,estado_String,fecha_nacimiento,tipo_sangre,recidencia,telefono,contacto_emergencia,parentesco,ID_TIPO_USUARIO")] Paciente_Asociado paciente_Asociado)
+        public ActionResult Create(Paciente_Asociado paciente_Asociado)
         {
-            if (ModelState.IsValid)
+            if (TempData.ContainsKey("mensaje"))
             {
-                db.Paciente_Asociado.Add(paciente_Asociado);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.Mensaje = TempData["mensaje"].ToString();
             }
 
-            return View(paciente_Asociado);
+            try
+            {
+                paciente_Asociado.estado = 1;
+                paciente_Asociado.Tipo_Usuario.id = 4;
+                db.Paciente_Asociado.Add(paciente_Asociado);
+                db.SaveChanges();
+                TempData["mensaje"] = "Guardado con éxito.";
+                return RedirectToAction("Index");
+            }
+            catch 
+            {
+            
+                return View(paciente_Asociado);
+            }
+           
         }
 
         // GET: Paciente_Asociado/Edit/5
@@ -63,7 +111,9 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                TempData["mensaje"] = "Especifique la Administrador.";
+                return RedirectToAction("Index");
             }
             Paciente_Asociado paciente_Asociado = db.Paciente_Asociado.Find(id);
             if (paciente_Asociado == null)
