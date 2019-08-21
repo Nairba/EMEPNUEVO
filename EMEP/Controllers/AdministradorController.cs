@@ -13,9 +13,10 @@ namespace EMEP.Controllers
     public class AdministradorController : Controller
     {
         private EMEPEntities db = new EMEPEntities();
-        // GET: Administrador
+        // GET: Administrador controler
         public ActionResult Index()
         {
+
             var administrador = db.Administrador.Include(a => a.Tipo_Usuario);
             foreach (var item in administrador)
             {
