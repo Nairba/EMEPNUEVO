@@ -16,7 +16,7 @@ namespace EMEP.Controllers
         public static List<Paciente> listaPaciente = new List<Paciente>();
         Paciente obj = null;
         // GET: Paciente
-        public ActionResult Index()
+        public ActionResult Indexp()
         {
             if (TempData.ContainsKey("mensaje"))
             {
@@ -40,7 +40,7 @@ namespace EMEP.Controllers
             return View(paciente.ToList());
         }
 
-        public ActionResult IndexPa()
+        public ActionResult Index()
         {
 
             string correoSesion = Session["CorreoId"].ToString();
