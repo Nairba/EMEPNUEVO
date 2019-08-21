@@ -22,10 +22,14 @@ namespace EMEP.Models
             this.Paciente = new HashSet<Paciente>();
             this.Paciente_Asociado = new HashSet<Paciente_Asociado>();
         }
-    
+
+        [Key]
         public int id { get; set; }
+        [Display(Name = "Tipo de usuario")]
+        [Required(ErrorMessage = "Seleccione el tipo de usuario")]
         public string descripcion { get; set; }
-    
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Administrador> Administrador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
