@@ -1,0 +1,35 @@
+﻿@model EMEP.Models.Paciente_Dueño_Asociado
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPa.cshtml";
+}
+
+<h2>Detalles de Pacientes Asociados</h2>
+
+<div>
+    <h4>Paciente Asociado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_PACIENTE_DUE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_PACIENTE_DUE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_PACIENTE_ASO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_PACIENTE_ASO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Ediar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Refresar", "Index")
+</p>

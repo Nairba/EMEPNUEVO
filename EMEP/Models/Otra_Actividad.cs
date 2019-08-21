@@ -11,38 +11,18 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Otra_Actividad
     {
-        [Key]
         public int id { get; set; }
-
         public int activo { get; set; }
-        [Display(Name = "Estado")]
-        [Required(ErrorMessage = "Seleccione el estado")]
-        public string estado_String { get; set; }
-        [Display(Name = "Nombre")]
-        [Required(ErrorMessage = "Debe de escribir el nombre")]
         public string nombre { get; set; }
-        [Display(Name = "Minutos")]
-        [Required(ErrorMessage = "Debe digitar los minutos")]
-        public int minutos { get; set; }
-
-        [Display(Name = "Cantidad de veses")]
-        [Required(ErrorMessage = "Debe digitar la cantidad de meses")]
-        public int cant_veces { get; set; }
-
-        [Display(Name = "Expediente")]
-        [Required(ErrorMessage = "Seleccione el expediente")]
-        public int ID_EXPEDIENTE { get; set; }
-
-        [DataType(DataType.ImageUrl)]
-        [Display(Name = "Imagen")]
-        [Required(ErrorMessage = "Seleccione imegen")]
+        public Nullable<int> minutos { get; set; }
+        public Nullable<int> cant_veces { get; set; }
+        public Nullable<int> ID_EXPEDIENTE { get; set; }
         public string img { get; set; }
+        public string estado_String { get; set; }
 
-        [Display(Name = "Expediente")]
         public virtual Expediente Expediente { get; set; }
     }
 }

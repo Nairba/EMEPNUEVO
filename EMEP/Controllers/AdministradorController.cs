@@ -42,7 +42,7 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                TempData["mensaje"] = "Especifique la Administrador.";
+                TempData["mensaje"] = "Especifique el Administrador.";
                 return RedirectToAction("Index");
             }
             Administrador administrador = db.Administrador.Find(id);

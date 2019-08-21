@@ -11,17 +11,12 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class ListaCita
     {
-        [Key]
         public int id { get; set; }
-        [Display(Name = "Registro de citas")]
-        [Required(ErrorMessage = "Seleccione un registro de citas")]
         public int idRegistrarCita { get; set; }
-        [Display(Name = "Registro de citas")]
+    
         public virtual RegistrarCita RegistrarCita { get; set; }
-
     }
 }

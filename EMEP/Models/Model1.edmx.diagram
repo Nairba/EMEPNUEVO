@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="EMEPModel.Compartir_Expediente" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Consulta" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Consultorio" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMEPModel.Datos_Paciente" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMEPModel.Datos_Paciente" Width="2.25" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Enfermedad_Expediente" Width="1.5" PointX="7.5" PointY="30.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Enfermedad_Familiar" Width="1.5" PointX="7.5" PointY="27.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Especialidad" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
@@ -32,8 +32,8 @@
         <EntityTypeShape EntityType="EMEPModel.Otra_Alergia" Width="1.5" PointX="7.5" PointY="46.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Otra_Enfermedad" Width="1.5" PointX="7.5" PointY="49.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Paciente" Width="1.5" PointX="3" PointY="28.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMEPModel.Paciente_Asociado" Width="1.5" PointX="3" PointY="44.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMEPModel.Paciente_Dueño_Asociado" Width="1.5" PointX="5.25" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMEPModel.Paciente_Asociado" Width="1.5" PointX="1.875" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMEPModel.Paciente_Dueño_Asociado" Width="1.5" PointX="2.375" PointY="34.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Paciente_Paciente_Asociado" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.RegistrarCita" Width="1.5" PointX="7.5" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="EMEPModel.Tipo_Usuario" Width="1.5" PointX="0.75" PointY="27.75" IsExpanded="true" />

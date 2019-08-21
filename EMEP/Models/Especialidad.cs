@@ -11,8 +11,7 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Especialidad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,13 +19,10 @@ namespace EMEP.Models
         {
             this.Consulta = new HashSet<Consulta>();
         }
-
-        [Key]
+    
         public int id { get; set; }
-        [Display(Name = "Descripción")]
-        [Required(ErrorMessage = "Debe escribir la descripción")]
         public string descripcion { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Consulta> Consulta { get; set; }
     }

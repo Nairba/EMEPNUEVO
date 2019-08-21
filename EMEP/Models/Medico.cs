@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Medico
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,70 +19,21 @@ namespace EMEP.Models
         {
             this.Consulta = new HashSet<Consulta>();
         }
-
-
-        [Key]
-        [DataType(DataType.EmailAddress)]
-        [Display(Name = "Correo electrónico")]
-        [Required(ErrorMessage = "Digite el correo electrónico")]
+    
         public string correo { get; set; }
-
-        [Display(Name = "Cédula")]
-        [Required(ErrorMessage = "Digite numero de cédula")]
-        [RegularExpression(@"[0-9]*", ErrorMessage = "Numero de cédula debe ser numérica")]
         public string cedula { get; set; }
-
-
-        [StringLength(50)]
-        [Display(Name = "Nombre")]
-        [Required(ErrorMessage = "Digite nombre")]
         public string nombre { get; set; }
-        [StringLength(50)]
-        [Display(Name = "Primer apellido")]
-        [Required(ErrorMessage = "Digite el primer apellido")]
         public string p_Apellido { get; set; }
-        [StringLength(50)]
-        [Display(Name = "Segundo apellido")]
-        [Required(ErrorMessage = "Digite el segundo apellido")]
         public string s_Apellido { get; set; }
-
-        [Display(Name = "Contraseña")]
-        [Required(ErrorMessage = "Digite la contraseña")]
-        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$",
-            ErrorMessage = "Formato invalido: La contraseña debe tener al menos 4 " + "\n" +
-            "caracteres, no más de 8 caracteres y debe" + "\n" +
-            "incluir al menos una letra mayúscula, una" + "\n" +
-            "letra minúscula y un dígito numérico.")]
         public string contrasenna { get; set; }
-
-        [Display(Name = "Sexo")]
-        [Required(ErrorMessage = "Seleccione eñ sexo")]
         public string sexo { get; set; }
-
         public int estado { get; set; }
-        public bool estad { get; set; }
-
-        [Display(Name = "Estado")]
-        [Required(ErrorMessage = "Seleccione el estado")]
-        public string estado_String { get; set; }
-
-        [Display(Name = "Tipo de usuario")]
-        [Required(ErrorMessage = "Seleccione el tipo de usuario")]
         public int ID_TIPO_USUARIO { get; set; }
         public int id { get; set; }
 
-
-        public string NombreCompletoM
-        {
-            get
-            {
-                return string.Format("{0} {1} {2}", p_Apellido, s_Apellido, nombre);
-            }
-        }
-
+        public string estado_String { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Consulta> Consulta { get; set; }
-        [Display(Name = "Tipo de usuario")]
         public virtual Tipo_Usuario Tipo_Usuario { get; set; }
     }
 }

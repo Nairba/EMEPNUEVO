@@ -365,3 +365,4 @@ C:\Users\Estudiante\Desktop\Nueva carpeta\EMEP\bin\es\System.Web.WebPages.Razor.
 C:\Users\Estudiante\Desktop\Nueva carpeta\EMEP\bin\es\System.Web.Optimization.resources.dll
 C:\Users\Estudiante\Desktop\Nueva carpeta\EMEP\obj\Debug\EMEP.dll
 C:\Users\Estudiante\Desktop\Nueva carpeta\EMEP\obj\Debug\EMEP.pdb
+C:\Users\Estudiante\Desktop\Nueva carpeta\EMEP\obj\Debug\EMEP.csprojResolveAssemblyReference.cache
