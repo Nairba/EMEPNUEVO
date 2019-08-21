@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlcoholController.cs" />
+    <Compile Include="Controllers\CirugiaController.cs" />
     <Compile Include="Controllers\Compartir_ExpedienteController.cs" />
     <Compile Include="Controllers\ConsultaController.cs" />
     <Compile Include="Controllers\ConsultorioController.cs" />
@@ -516,6 +517,11 @@
     <Content Include="Views\Horario\Details.cshtml" />
     <Content Include="Views\Horario\Edit.cshtml" />
     <Content Include="Views\Horario\Index.cshtml" />
+    <Content Include="Views\Cirugia\Create.cshtml" />
+    <Content Include="Views\Cirugia\Delete.cshtml" />
+    <Content Include="Views\Cirugia\Details.cshtml" />
+    <Content Include="Views\Cirugia\Edit.cshtml" />
+    <Content Include="Views\Cirugia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
