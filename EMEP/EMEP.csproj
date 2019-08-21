@@ -212,6 +212,7 @@
     <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Paciente_AsociadoController.cs" />
     <Compile Include="Controllers\Tipo_UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -530,6 +531,11 @@
     <Content Include="Views\Lista_Enfermedad\Details.cshtml" />
     <Content Include="Views\Lista_Enfermedad\Edit.cshtml" />
     <Content Include="Views\Lista_Enfermedad\Index.cshtml" />
+    <Content Include="Views\Paciente_Asociado\Create.cshtml" />
+    <Content Include="Views\Paciente_Asociado\Delete.cshtml" />
+    <Content Include="Views\Paciente_Asociado\Details.cshtml" />
+    <Content Include="Views\Paciente_Asociado\Edit.cshtml" />
+    <Content Include="Views\Paciente_Asociado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

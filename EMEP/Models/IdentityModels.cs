@@ -29,5 +29,7 @@ namespace EMEP.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<EMEP.Models.Paciente_Asociado> Paciente_Asociado { get; set; }
     }
 }

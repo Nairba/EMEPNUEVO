@@ -20,7 +20,7 @@ namespace EMEP.Models
         {
             this.Compartir_Expediente = new HashSet<Compartir_Expediente>();
             this.Expediente = new HashSet<Expediente>();
-            this.Paciente_Dueño_Asociado = new HashSet<Paciente_Dueño_Asociado>();
+            //this.Paciente_Dueño_Asociado = new HashSet<Paciente_Dueño_Asociado>();
         }
 
         [Key]
