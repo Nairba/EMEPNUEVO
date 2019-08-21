@@ -11,14 +11,22 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Paciente_Dueño_Asociado
     {
+        [Key]
         public int id { get; set; }
+        [Display(Name = "Paciente dueño")]
+        [Required(ErrorMessage = "Seleccione el paciente dueño")]
         public string ID_PACIENTE_DUE { get; set; }
+        [Display(Name = "Paciente asociado")]
+        [Required(ErrorMessage = "Seleccione el paciente asociado")]
         public string ID_PACIENTE_ASO { get; set; }
-    
+
+        [Display(Name = "Paciente dueño")]
         public virtual Paciente Paciente { get; set; }
+        [Display(Name = "Paciente asociado")]
         public virtual Paciente_Asociado Paciente_Asociado { get; set; }
     }
 }
