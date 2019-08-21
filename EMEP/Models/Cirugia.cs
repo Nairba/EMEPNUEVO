@@ -11,33 +11,15 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Cirugia
     {
-        [Key]
         public int id { get; set; }
-
-        [Display(Name = "Nombre")]
-        [Required(ErrorMessage = "Digite el nombre de la cirugía")]
         public string nombre { get; set; }
-
-        [Display(Name = "Fecha")]
-        [Column(TypeName = "date")]
-        [DataType(DataType.Date, ErrorMessage = "Debe ser tipo Fecha")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",
-           ApplyFormatInEditMode = true)]
         public System.DateTime fecha { get; set; }
-
-        [Display(Name = "Lugar")]
-        [Required(ErrorMessage = "Digite el nombre del lugar")]
         public string donde { get; set; }
-
-        [Display(Name = "Expediente")]
-        [Required(ErrorMessage = "Seleccione el Expediente")]
         public int ID_EXPEDIENTE { get; set; }
-        [Display(Name = "Expediente")]
+    
         public virtual Expediente Expediente { get; set; }
     }
 }

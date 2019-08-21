@@ -1,0 +1,58 @@
+﻿@model IEnumerable<EMEP.Models.Horario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPa.cshtml";
+}
+
+<h2>Lista de Horarios</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Horario", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.hora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.am_pm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.am_pm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id }) |
+            @Html.ActionLink("Cambiar Estado", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

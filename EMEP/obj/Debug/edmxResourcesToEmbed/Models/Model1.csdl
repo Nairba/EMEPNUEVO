@@ -195,7 +195,7 @@
     <Property Name="minutos" Type="Int32" />
     <Property Name="cant_veces" Type="Int32" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" Nullable="false" />
-    <Property Name="img" Type="Binary" ConcurrencyMode="Fixed" MaxLength="Max" FixedLength="false" />
+    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Expediente" Relationship="Self.FK_Lista_Actividad_Fisica_Expediente" FromRole="Lista_Actividad_Fisica" ToRole="Expediente" />
   </EntityType>
   <EntityType Name="Lista_Alergia">
@@ -209,7 +209,7 @@
     <Property Name="reaccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
-    <Property Name="img" Type="Binary" />
+    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Categoria_Alergia" Relationship="Self.FK_Lista_Alergia_Categoria_Alergia" FromRole="Lista_Alergia" ToRole="Categoria_Alergia" />
     <NavigationProperty Name="Expediente_Alergia" Relationship="Self.FK_Expediente_Alergia_Lista_Alergia" FromRole="Lista_Alergia" ToRole="Expediente_Alergia" />
   </EntityType>
@@ -222,7 +222,7 @@
     <Property Name="ID_CATEGORIA" Type="Int32" Nullable="false" />
     <Property Name="estado" Type="Int32" Nullable="false" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
-    <Property Name="img" Type="Binary" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Categoria" Relationship="Self.FK_Lista_Enfermedad_Categoria" FromRole="Lista_Enfermedad" ToRole="Categoria" />
     <NavigationProperty Name="Enfermedad_Expediente" Relationship="Self.FK_Enfermedad_Expediente_Lista_Enfermedad" FromRole="Lista_Enfermedad" ToRole="Enfermedad_Expediente" />
     <NavigationProperty Name="Enfermedad_Familiar" Relationship="Self.FK_Enfermedad_Familiar_Lista_Enfermedad" FromRole="Lista_Enfermedad" ToRole="Enfermedad_Familiar" />
@@ -264,7 +264,7 @@
     <Property Name="minutos" Type="Int32" />
     <Property Name="cant_veces" Type="Int32" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
-    <Property Name="img" Type="Binary" />
+    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Expediente" Relationship="EMEPModel.FK_Otra_Actividad_Expediente" FromRole="Otra_Actividad" ToRole="Expediente" />
   </EntityType>
   <EntityType Name="Otra_Alergia">
@@ -276,7 +276,7 @@
     <Property Name="estado" Type="Int32" />
     <Property Name="reaccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="img" Type="Binary" />
+    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
     <Property Name="ID_CATEGORIA" Type="Int32" />
     <NavigationProperty Name="Expediente" Relationship="EMEPModel.FK_Otra_Alergia_Expediente" FromRole="Otra_Alergia" ToRole="Expediente" />
@@ -289,7 +289,7 @@
     <Property Name="descripciom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="estado" Type="Int32" />
-    <Property Name="img" Type="Binary" />
+    <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ID_EXPEDIENTE" Type="Int32" />
     <NavigationProperty Name="Expediente" Relationship="EMEPModel.FK_Otra_Enfermedad_Expediente" FromRole="Otra_Enfermedad" ToRole="Expediente" />
   </EntityType>
@@ -310,7 +310,6 @@
     <NavigationProperty Name="Expediente" Relationship="Self.FK_Expediente_Paciente" FromRole="Paciente" ToRole="Expediente" />
     <NavigationProperty Name="Paciente_Paciente_Asociado" Relationship="Self.FK_Paciente_Paciente_Asociado_Paciente" FromRole="Paciente" ToRole="Paciente_Paciente_Asociado" />
     <NavigationProperty Name="Tipo_Usuario" Relationship="Self.FK_Paciente_Tipo_Usuario" FromRole="Paciente" ToRole="Tipo_Usuario" />
-    <NavigationProperty Name="RegistrarCita" Relationship="EMEPModel.FK_RegistrarCita_Paciente" FromRole="Paciente" ToRole="RegistrarCita" />
   </EntityType>
   <EntityType Name="Paciente_Paciente_Asociado">
     <Key>
@@ -760,10 +759,6 @@
       <End Role="RegistrarCita" EntitySet="RegistrarCita" />
       <End Role="ListaCita" EntitySet="ListaCita" />
     </AssociationSet>
-    <AssociationSet Name="FK_RegistrarCita_Paciente" Association="EMEPModel.FK_RegistrarCita_Paciente">
-      <End Role="Paciente" EntitySet="Paciente" />
-      <End Role="RegistrarCita" EntitySet="RegistrarCita" />
-    </AssociationSet>
   </EntityContainer>
   <Association Name="FK_Otra_Actividad_Expediente">
     <End Type="EMEPModel.Expediente" Role="Expediente" Multiplicity="0..1" />
@@ -831,7 +826,6 @@
     <NavigationProperty Name="Consulta" Relationship="EMEPModel.FK_RegistrarCita_Consulta" FromRole="RegistrarCita" ToRole="Consulta" />
     <NavigationProperty Name="Horario" Relationship="EMEPModel.FK_RegistrarCita_Horario" FromRole="RegistrarCita" ToRole="Horario" />
     <NavigationProperty Name="ListaCita" Relationship="EMEPModel.FK_ListaCita_RegistrarCita" FromRole="RegistrarCita" ToRole="ListaCita" />
-    <NavigationProperty Name="Paciente" Relationship="EMEPModel.FK_RegistrarCita_Paciente" FromRole="RegistrarCita" ToRole="Paciente" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -888,18 +882,6 @@
       </Principal>
       <Dependent Role="ListaCita">
         <PropertyRef Name="idRegistrarCita" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_RegistrarCita_Paciente">
-    <End Type="EMEPModel.Paciente" Role="Paciente" Multiplicity="1" />
-    <End Type="EMEPModel.RegistrarCita" Role="RegistrarCita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Paciente">
-        <PropertyRef Name="correo" />
-      </Principal>
-      <Dependent Role="RegistrarCita">
-        <PropertyRef Name="ID_PACIENTE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

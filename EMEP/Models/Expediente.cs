@@ -11,9 +11,7 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Expediente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -32,24 +30,9 @@ namespace EMEP.Models
             this.Otra_Enfermedad = new HashSet<Otra_Enfermedad>();
         }
     
-        [Key]
         public int id { get; set; }
-        [Display(Name = "Fecha")]
-        [Column(TypeName = "date")]
-        [DataType(DataType.Date, ErrorMessage = "Debe ser tipo Fecha")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",
-          ApplyFormatInEditMode = true)]
-        public DateTime fecha { get; set; }
-
-        public bool estad { get; set; }
-
-        [Display(Name = "Estado")]
-        [Required(ErrorMessage = "Seleccione el estado")]
-        public string estado_String { get; set; }
+        public System.DateTime fecha { get; set; }
         public int estado { get; set; }
-
-        [Display(Name = "Paciente")]
-        [Required(ErrorMessage = "Seleccione el Paciente")]
         public string ID_PACIENTE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
