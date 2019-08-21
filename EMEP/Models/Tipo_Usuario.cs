@@ -20,6 +20,7 @@ namespace EMEP.Models
             this.Administrador = new HashSet<Administrador>();
             this.Medico = new HashSet<Medico>();
             this.Paciente = new HashSet<Paciente>();
+            this.Paciente_Asociado = new HashSet<Paciente_Asociado>();
         }
     
         public int id { get; set; }
@@ -31,5 +32,7 @@ namespace EMEP.Models
         public virtual ICollection<Medico> Medico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Paciente> Paciente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Paciente_Asociado> Paciente_Asociado { get; set; }
     }
 }

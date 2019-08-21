@@ -303,6 +303,12 @@
     <Compile Include="Models\Paciente.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Paciente_Asociado.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Paciente_Dueño_Asociado.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RegistrarCita.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

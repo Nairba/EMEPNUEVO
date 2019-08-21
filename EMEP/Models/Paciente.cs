@@ -19,6 +19,7 @@ namespace EMEP.Models
         {
             this.Compartir_Expediente = new HashSet<Compartir_Expediente>();
             this.Expediente = new HashSet<Expediente>();
+            this.Paciente_Dueño_Asociado = new HashSet<Paciente_Dueño_Asociado>();
         }
     
         public string correo { get; set; }
@@ -36,5 +37,7 @@ namespace EMEP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expediente> Expediente { get; set; }
         public virtual Tipo_Usuario Tipo_Usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Paciente_Dueño_Asociado> Paciente_Dueño_Asociado { get; set; }
     }
 }

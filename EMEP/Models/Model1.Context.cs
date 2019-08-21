@@ -54,5 +54,7 @@ namespace EMEP.Models
         public virtual DbSet<ListaCita> ListaCita { get; set; }
         public virtual DbSet<RegistrarCita> RegistrarCita { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Paciente_Asociado> Paciente_Asociado { get; set; }
+        public virtual DbSet<Paciente_Dueño_Asociado> Paciente_Dueño_Asociado { get; set; }
     }
 }
