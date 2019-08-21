@@ -90,7 +90,6 @@ C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\EMEP\EMEP\obj\Debug\EMEP.dll
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\EMEP\EMEP\obj\Debug\EMEP.pdb
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\EMEP\EMEP\obj\Debug\EMEP.csprojResolveAssemblyReference.cache
-C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\obj\Debug\EMEP.csprojResolveAssemblyReference.cache
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\roslyn\csc.exe
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Adrián\Documents\UTN\Diplomado\2019\2do Cuatrimestre\Progra 6\Proyecto de progra 6\ENEPNUEVO\EMEP\EMEP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll

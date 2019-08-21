@@ -18,9 +18,15 @@ namespace EMEP.Models
     {
         [Key]
         public int id { get; set; }
+   
+        public int activo { get; set; }
+
+        public bool estad { get; set; }
+
         [Display(Name = "Estado")]
         [Required(ErrorMessage = "Seleccione el estado")]
-        public int activo { get; set; }
+        public string estado_String { get; set; }
+
         [Display(Name = "Inicio")]
         [Required(ErrorMessage = "Digite la edad  de inicio")]
         public int inicio { get; set; }

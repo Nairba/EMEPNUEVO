@@ -20,7 +20,7 @@ namespace EMEP.Models
         {
             this.Compartir_Expediente = new HashSet<Compartir_Expediente>();
             this.Expediente = new HashSet<Expediente>();
-            this.Paciente_Paciente_Asociado = new HashSet<Paciente_Paciente_Asociado>();
+           
             this.RegistrarCita = new HashSet<RegistrarCita>();
         }
 
@@ -78,7 +78,7 @@ namespace EMEP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expediente> Expediente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Paciente_Paciente_Asociado> Paciente_Paciente_Asociado { get; set; }
+      
         public virtual Tipo_Usuario Tipo_Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegistrarCita> RegistrarCita { get; set; }

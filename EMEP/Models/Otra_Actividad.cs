@@ -31,7 +31,7 @@ namespace EMEP.Models
 
         [Display(Name = "Cantidad de veses")]
         [Required(ErrorMessage = "Debe digitar la cantidad de meses")]
-        public <int cant_veces { get; set; }
+        public int cant_veces { get; set; }
 
         [Display(Name = "Expediente")]
         [Required(ErrorMessage = "Seleccione el expediente")]

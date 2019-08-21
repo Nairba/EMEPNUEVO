@@ -19,9 +19,15 @@ namespace EMEP.Models
         [Key]
         public int id { get; set; }
 
+      
+        public int activo { get; set; }
+
+        public bool estad { get; set; }
+
         [Display(Name = "Estado")]
         [Required(ErrorMessage = "Seleccione el estado")]
-        public int activo { get; set; }
+        public string estado_String { get; set; }
+
         [Display(Name = "Cantidad de cigerros")]
         [Required(ErrorMessage = "Digite la cantidad de cigarros")]
         public int cant_cigarrillos { get; set; }
