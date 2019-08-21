@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EMEPModelStoreContainer" CdmEntityContainer="EMEPEntities">
+    <EntitySetMapping Name="Administrador">
+      <EntityTypeMapping TypeName="EMEPModel.Administrador">
+        <MappingFragment StoreEntitySet="Administrador">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ID_TIPO_USUARIO" ColumnName="ID_TIPO_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Alcohol">
+      <EntityTypeMapping TypeName="EMEPModel.Alcohol">
+        <MappingFragment StoreEntitySet="Alcohol">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="inicio" ColumnName="inicio" />
+          <ScalarProperty Name="frecuencia" ColumnName="frecuencia" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="cant_tipo" ColumnName="cant_tipo" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="EMEPModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria_Alergia">
+      <EntityTypeMapping TypeName="EMEPModel.Categoria_Alergia">
+        <MappingFragment StoreEntitySet="Categoria_Alergia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cirugia">
+      <EntityTypeMapping TypeName="EMEPModel.Cirugia">
+        <MappingFragment StoreEntitySet="Cirugia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="donde" ColumnName="donde" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Compartir_Expediente">
+      <EntityTypeMapping TypeName="EMEPModel.Compartir_Expediente">
+        <MappingFragment StoreEntitySet="Compartir_Expediente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+          <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ID_PACIENTE_COMPARTE" ColumnName="ID_PACIENTE_COMPARTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consulta">
+      <EntityTypeMapping TypeName="EMEPModel.Consulta">
+        <MappingFragment StoreEntitySet="Consulta">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ID_MEDICO" ColumnName="ID_MEDICO" />
+          <ScalarProperty Name="ID_CONSULTORIO" ColumnName="ID_CONSULTORIO" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="ID_ESPECIALIDAD" ColumnName="ID_ESPECIALIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consultorio">
+      <EntityTypeMapping TypeName="EMEPModel.Consultorio">
+        <MappingFragment StoreEntitySet="Consultorio">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Datos_Paciente">
+      <EntityTypeMapping TypeName="EMEPModel.Datos_Paciente">
+        <MappingFragment StoreEntitySet="Datos_Paciente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="tipo_sangre" ColumnName="tipo_sangre" />
+          <ScalarProperty Name="recidencia" ColumnName="recidencia" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="contacto_emergencia" ColumnName="contacto_emergencia" />
+          <ScalarProperty Name="parentesco" ColumnName="parentesco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enfermedad_Expediente">
+      <EntityTypeMapping TypeName="EMEPModel.Enfermedad_Expediente">
+        <MappingFragment StoreEntitySet="Enfermedad_Expediente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ID_EFERMEDAD" ColumnName="ID_EFERMEDAD" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enfermedad_Familiar">
+      <EntityTypeMapping TypeName="EMEPModel.Enfermedad_Familiar">
+        <MappingFragment StoreEntitySet="Enfermedad_Familiar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="parentesco" ColumnName="parentesco" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+          <ScalarProperty Name="ID_ENFERMEDAD" ColumnName="ID_ENFERMEDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Especialidad">
+      <EntityTypeMapping TypeName="EMEPModel.Especialidad">
+        <MappingFragment StoreEntitySet="Especialidad">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expediente">
+      <EntityTypeMapping TypeName="EMEPModel.Expediente">
+        <MappingFragment StoreEntitySet="Expediente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expediente_Alergia">
+      <EntityTypeMapping TypeName="EMEPModel.Expediente_Alergia">
+        <MappingFragment StoreEntitySet="Expediente_Alergia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+          <ScalarProperty Name="ID_ALERGIA" ColumnName="ID_ALERGIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fumador">
+      <EntityTypeMapping TypeName="EMEPModel.Fumador">
+        <MappingFragment StoreEntitySet="Fumador">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cant_cigarrillos" ColumnName="cant_cigarrillos" />
+          <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Horario">
+      <EntityTypeMapping TypeName="EMEPModel.Horario">
+        <MappingFragment StoreEntitySet="Horario">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="dia" ColumnName="dia" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="am_pm" ColumnName="am_pm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lista_Actividad_Fisica">
+      <EntityTypeMapping TypeName="EMEPModel.Lista_Actividad_Fisica">
+        <MappingFragment StoreEntitySet="Lista_Actividad_Fisica">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="minutos" ColumnName="minutos" />
+          <ScalarProperty Name="cant_veces" ColumnName="cant_veces" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lista_Alergia">
+      <EntityTypeMapping TypeName="EMEPModel.Lista_Alergia">
+        <MappingFragment StoreEntitySet="Lista_Alergia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="reaccion" ColumnName="reaccion" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lista_Enfermedad">
+      <EntityTypeMapping TypeName="EMEPModel.Lista_Enfermedad">
+        <MappingFragment StoreEntitySet="Lista_Enfermedad">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicamento">
+      <EntityTypeMapping TypeName="EMEPModel.Medicamento">
+        <MappingFragment StoreEntitySet="Medicamento">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medico">
+      <EntityTypeMapping TypeName="EMEPModel.Medico">
+        <MappingFragment StoreEntitySet="Medico">
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="p_Apellido" ColumnName="p_Apellido" />
+          <ScalarProperty Name="s_Apellido" ColumnName="s_Apellido" />
+          <ScalarProperty Name="contrasenna" ColumnName="contrasenna" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ID_TIPO_USUARIO" ColumnName="ID_TIPO_USUARIO" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otra_Actividad">
+      <EntityTypeMapping TypeName="EMEPModel.Otra_Actividad">
+        <MappingFragment StoreEntitySet="Otra_Actividad">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="minutos" ColumnName="minutos" />
+          <ScalarProperty Name="cant_veces" ColumnName="cant_veces" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otra_Alergia">
+      <EntityTypeMapping TypeName="EMEPModel.Otra_Alergia">
+        <MappingFragment StoreEntitySet="Otra_Alergia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="reaccion" ColumnName="reaccion" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+          <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otra_Enfermedad">
+      <EntityTypeMapping TypeName="EMEPModel.Otra_Enfermedad">
+        <MappingFragment StoreEntitySet="Otra_Enfermedad">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripciom" ColumnName="descripciom" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="ID_EXPEDIENTE" ColumnName="ID_EXPEDIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paciente">
+      <EntityTypeMapping TypeName="EMEPModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="p_Apellido" ColumnName="p_Apellido" />
+          <ScalarProperty Name="s_Apellido" ColumnName="s_Apellido" />
+          <ScalarProperty Name="contrasenna" ColumnName="contrasenna" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ID_TIPO_USUARIO" ColumnName="ID_TIPO_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paciente_Paciente_Asociado">
+      <EntityTypeMapping TypeName="EMEPModel.Paciente_Paciente_Asociado">
+        <MappingFragment StoreEntitySet="Paciente_Paciente_Asociado">
+          <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+          <ScalarProperty Name="ID_PACIENTE_ASOCIADO" ColumnName="ID_PACIENTE_ASOCIADO" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Usuario">
+      <EntityTypeMapping TypeName="EMEPModel.Tipo_Usuario">
+        <MappingFragment StoreEntitySet="Tipo_Usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgendaCita">
+      <EntityTypeMapping TypeName="EMEPModel.AgendaCita">
+        <MappingFragment StoreEntitySet="AgendaCita">
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="idHora" ColumnName="idHora" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListaCita">
+      <EntityTypeMapping TypeName="EMEPModel.ListaCita">
+        <MappingFragment StoreEntitySet="ListaCita">
+          <ScalarProperty Name="idRegistrarCita" ColumnName="idRegistrarCita" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistrarCita">
+      <EntityTypeMapping TypeName="EMEPModel.RegistrarCita">
+        <MappingFragment StoreEntitySet="RegistrarCita">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="disponible" ColumnName="disponible" />
+          <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
+          <ScalarProperty Name="ID_CONSULTA" ColumnName="ID_CONSULTA" />
+          <ScalarProperty Name="ID_PACIENTE" ColumnName="ID_PACIENTE" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EMEPModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
