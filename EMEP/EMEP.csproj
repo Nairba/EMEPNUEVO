@@ -201,6 +201,7 @@
     <Compile Include="Controllers\Compartir_ExpedienteController.cs" />
     <Compile Include="Controllers\ConsultaController.cs" />
     <Compile Include="Controllers\ConsultorioController.cs" />
+    <Compile Include="Controllers\Enfermedad_FamiliarController.cs" />
     <Compile Include="Controllers\EspecialidadController.cs" />
     <Compile Include="Controllers\FumadorController.cs" />
     <Compile Include="Controllers\HorarioController.cs" />
@@ -521,6 +522,11 @@
     <Content Include="Views\Cirugia\Details.cshtml" />
     <Content Include="Views\Cirugia\Edit.cshtml" />
     <Content Include="Views\Cirugia\Index.cshtml" />
+    <Content Include="Views\Enfermedad_Familiar\Create.cshtml" />
+    <Content Include="Views\Enfermedad_Familiar\Delete.cshtml" />
+    <Content Include="Views\Enfermedad_Familiar\Details.cshtml" />
+    <Content Include="Views\Enfermedad_Familiar\Edit.cshtml" />
+    <Content Include="Views\Enfermedad_Familiar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

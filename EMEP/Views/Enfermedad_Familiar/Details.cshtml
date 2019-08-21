@@ -1,0 +1,51 @@
+﻿@model EMEP.Models.Enfermedad_Familiar
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPa.cshtml";
+}
+
+<h2>Detalles de la Enfermedad</h2>
+
+<div>
+    <h4>Enfermedad Familiar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.parentesco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parentesco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Expediente.ID_PACIENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expediente.ID_PACIENTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lista_Enfermedad.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lista_Enfermedad.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
