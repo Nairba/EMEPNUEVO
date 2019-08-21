@@ -10,172 +10,170 @@ using EMEP.Models;
 
 namespace EMEP.Controllers
 {
-    public class AlcoholController : Controller
+    public class Compartir_ExpedienteController : Controller
     {
         private EMEPEntities db = new EMEPEntities();
 
-        // GET: Alcohol
+        // GET: Compartir_Expediente
         public ActionResult Index()
         {
             if (TempData.ContainsKey("mensaje"))
             {
                 ViewBag.Mensaje = TempData["mensaje"].ToString();
             }
-            var alcohol = db.Alcohol.Include(a => a.Expediente);
-            return View(alcohol.ToList());
+            var compartir_Expediente = db.Compartir_Expediente.Include(c => c.Paciente);
+            return View(compartir_Expediente.ToList());
         }
 
-        // GET: Alcohol/Details/5
+        // GET: Compartir_Expediente/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
-                TempData["mensaje"] = "Especifique la condición.";
+                TempData["mensaje"] = "Especifique la acción.";
                 return RedirectToAction("Index");
             }
-            Alcohol alcohol = db.Alcohol.Find(id);
-            if (alcohol != null)
+            Compartir_Expediente compartir = db.Compartir_Expediente.Find(id);
+            if (compartir != null)
             {
-                if (alcohol.activo == 1)
+                if (compartir.estado == 1)
                 {
-                    alcohol.estado_String = "Activo";
+                    compartir.estado_String = "Activo";
                 }
                 else
                 {
-                    alcohol.estado_String = "Inactivo";
+                    compartir.estado_String = "Inactivo";
                 }
             }
-            if (alcohol == null)
+            if (compartir == null)
             {
-                TempData["mensaje"] = "La condición no éxiste.";
+                TempData["mensaje"] = "La acción no éxiste.";
                 return RedirectToAction("Index");
             }
-            return View(alcohol);
+            return View(compartir);
         }
 
-        // GET: Alcohol/Create
+        // GET: Compartir_Expediente/Create
         public ActionResult Create()
         {
-            ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE");
+            ViewBag.ID_PACIENTE = new SelectList(db.Paciente, "correo", "cedula");
             return View();
         }
 
-        // POST: Alcohol/Create
+        // POST: Compartir_Expediente/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Alcohol alcohol)
+        public ActionResult Create(Compartir_Expediente compartir_Expediente)
         {
-            try
+          try
             {
-                alcohol.activo = 1;
-                db.Alcohol.Add(alcohol);
+                compartir_Expediente.estado = 1;
+                db.Compartir_Expediente.Add(compartir_Expediente);
                 db.SaveChanges();
                 TempData["mensaje"] = "Guardado con éxito.";
                 return RedirectToAction("Index");
             }
             catch
             {
-
-                ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE", alcohol.ID_EXPEDIENTE);
-                return View(alcohol);
+                ViewBag.ID_PACIENTE = new SelectList(db.Paciente, "correo", "cedula", compartir_Expediente.ID_PACIENTE);
+                return View(compartir_Expediente);
             }
+            
         }
 
-        // GET: Alcohol/Edit/5
+        // GET: Compartir_Expediente/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
-                TempData["mensaje"] = "Especifique la condición.";
+                TempData["mensaje"] = "Especifique la acción.";
                 return RedirectToAction("Index");
             }
-            Alcohol alcohol = db.Alcohol.Find(id);
-            if (alcohol != null)
+            Compartir_Expediente compartir = db.Compartir_Expediente.Find(id);
+            if (compartir != null)
             {
-                if (alcohol.activo == 1)
+                if (compartir.estado == 1)
                 {
-                    alcohol.estado_String = "Activo";
+                    compartir.estado_String = "Activo";
                 }
                 else
                 {
-                    alcohol.estado_String = "Inactivo";
+                    compartir.estado_String = "Inactivo";
                 }
             }
-            if (alcohol == null)
+            if (compartir == null)
             {
-                TempData["mensaje"] = "La condición no éxiste.";
+                TempData["mensaje"] = "La acción no éxiste.";
                 return RedirectToAction("Index");
             }
-            ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE", alcohol.ID_EXPEDIENTE);
-            return View(alcohol);
+            return View(compartir);
         }
 
-        // POST: Alcohol/Edit/5
+        // POST: Compartir_Expediente/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Alcohol alcohol)
+        public ActionResult Edit(Compartir_Expediente compartir_Expediente)
         {
             try
             {
-                db.Entry(alcohol).State = EntityState.Modified;
+                db.Entry(compartir_Expediente).State = EntityState.Modified;
                 db.SaveChanges();
-                TempData["mensaje"] = "Atualizado con éxito.";
+                TempData["mensaje"] = "Actulización con éxito.";
                 return RedirectToAction("Index");
             }
             catch
             {
 
-                ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE", alcohol.ID_EXPEDIENTE);
-                return View(alcohol);
+                ViewBag.ID_PACIENTE = new SelectList(db.Paciente, "correo", "cedula", compartir_Expediente.ID_PACIENTE);
+                return View(compartir_Expediente);
             }
         }
 
-        // GET: Alcohol/Delete/5
+        // GET: Compartir_Expediente/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
-
-                TempData["mensaje"] = "Especifique la condición.";
+                TempData["mensaje"] = "Especifique la acción.";
                 return RedirectToAction("Index");
             }
-            Alcohol alcohol = db.Alcohol.Find(id);
-            if (alcohol != null)
+            Compartir_Expediente compartir = db.Compartir_Expediente.Find(id);
+            if (compartir != null)
             {
-                if (alcohol.activo == 1)
+                if (compartir.estado == 1)
                 {
-                    alcohol.estado_String = "Activo";
+                    compartir.estado_String = "Activo";
                 }
                 else
                 {
-                    alcohol.estado_String = "Inactivo";
+                    compartir.estado_String = "Inactivo";
                 }
             }
-            if (alcohol == null)
+            if (compartir == null)
             {
-                TempData["mensaje"] = "La condición no éxiste.";
+                TempData["mensaje"] = "La acción no éxiste.";
                 return RedirectToAction("Index");
             }
-            return View(alcohol);
+            return View(compartir);
         }
 
-        // POST: Alcohol/Delete/5
+        // POST: Compartir_Expediente/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Alcohol alcohol = db.Alcohol.Find(id);
-            if (alcohol.activo == 0)
+            Compartir_Expediente compartir = db.Compartir_Expediente.Find(id);
+            if (compartir.estado == 0)
             {
-                alcohol.activo = 1;
+                compartir.estado = 1;
             }
             else
             {
-                alcohol.activo = 0;
+                compartir.estado = 0;
             }
             db.SaveChanges();
             TempData["mensaje"] = "Estado actualizado.";
