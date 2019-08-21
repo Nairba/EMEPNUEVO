@@ -456,3 +456,4 @@ D:\Nairba\EMEPNuevo\EMEP\bin\es\System.Web.WebPages.Razor.resources.dll
 D:\Nairba\EMEPNuevo\EMEP\bin\es\System.Web.Optimization.resources.dll
 D:\Nairba\EMEPNuevo\EMEP\obj\Debug\EMEP.dll
 D:\Nairba\EMEPNuevo\EMEP\obj\Debug\EMEP.pdb
+D:\Nairba\EMEPNuevo\EMEP\obj\Debug\EMEP.csprojResolveAssemblyReference.cache
