@@ -201,6 +201,7 @@
     <Compile Include="Controllers\ConsultorioController.cs" />
     <Compile Include="Controllers\EspecialidadController.cs" />
     <Compile Include="Controllers\FumadorController.cs" />
+    <Compile Include="Controllers\MedicamentoController.cs" />
     <Compile Include="Controllers\MedicoController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\RegistrarPacienteController.cs" />
@@ -493,6 +494,10 @@
     <Content Include="Views\Alcohol\Details.cshtml" />
     <Content Include="Views\Alcohol\Edit.cshtml" />
     <Content Include="Views\Alcohol\Index.cshtml" />
+    <Content Include="Views\Medicamento\Create.cshtml" />
+    <Content Include="Views\Medicamento\Details.cshtml" />
+    <Content Include="Views\Medicamento\Edit.cshtml" />
+    <Content Include="Views\Medicamento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
