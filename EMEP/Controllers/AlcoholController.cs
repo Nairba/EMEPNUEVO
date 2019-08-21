@@ -10,21 +10,22 @@ using EMEP.Models;
 
 namespace EMEP.Controllers
 {
-    public class FumadorController : Controller
+    public class AlcoholController : Controller
     {
         private EMEPEntities db = new EMEPEntities();
-        // GET: Fumador
+
+        // GET: Alcohol
         public ActionResult Index()
         {
             if (TempData.ContainsKey("mensaje"))
             {
                 ViewBag.Mensaje = TempData["mensaje"].ToString();
             }
-            var fumador = db.Fumador.Include(f => f.Expediente);
-            return View(fumador.ToList());
+            var alcohol = db.Alcohol.Include(a => a.Expediente);
+            return View(alcohol.ToList());
         }
 
-        // GET: Fumador/Details/5
+        // GET: Alcohol/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -32,56 +33,57 @@ namespace EMEP.Controllers
                 TempData["mensaje"] = "Especifique la condición.";
                 return RedirectToAction("Index");
             }
-            Fumador fumador = db.Fumador.Find(id);
-            if (fumador != null)
+            Alcohol alcohol = db.Alcohol.Find(id);
+            if (alcohol != null)
             {
-                if (fumador.activo == 1)
+                if (alcohol.activo == 1)
                 {
-                    fumador.estado_String = "Activo";
+                    alcohol.estado_String = "Activo";
                 }
                 else
                 {
-                    fumador.estado_String = "Inactivo";
+                    alcohol.estado_String = "Inactivo";
                 }
             }
-            if (fumador == null)
+            if (alcohol == null)
             {
                 TempData["mensaje"] = "La condición no éxiste.";
                 return RedirectToAction("Index");
             }
-            return View(fumador);
+            return View(alcohol);
         }
 
-        // GET: Fumador/Create
+        // GET: Alcohol/Create
         public ActionResult Create()
         {
             ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE");
             return View();
         }
 
-        // POST: Fumador/Create
+        // POST: Alcohol/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Fumador fumador)
+        public ActionResult Create(Alcohol alcohol)
         {
             try
             {
-                fumador.activo = 1;
-                db.Fumador.Add(fumador);
+                alcohol.activo = 1;
+                db.Alcohol.Add(alcohol);
                 db.SaveChanges();
                 TempData["mensaje"] = "Guardado con éxito.";
                 return RedirectToAction("Index");
             }
             catch
             {
-                ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE", fumador.ID_EXPEDIENTE);
-                return View(fumador);
+
+                ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE", alcohol.ID_EXPEDIENTE);
+                return View(alcohol);
             }
         }
 
-        // GET: Fumador/Edit/5
+        // GET: Alcohol/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -89,37 +91,37 @@ namespace EMEP.Controllers
                 TempData["mensaje"] = "Especifique la condición.";
                 return RedirectToAction("Index");
             }
-            Fumador fumador = db.Fumador.Find(id);
-            if (fumador != null)
+            Alcohol alcohol = db.Alcohol.Find(id);
+            if (alcohol != null)
             {
-                if (fumador.activo == 1)
+                if (alcohol.activo == 1)
                 {
-                    fumador.estado_String = "Activo";
+                    alcohol.estado_String = "Activo";
                 }
                 else
                 {
-                    fumador.estado_String = "Inactivo";
+                    alcohol.estado_String = "Inactivo";
                 }
             }
-            if (fumador == null)
+            if (alcohol == null)
             {
                 TempData["mensaje"] = "La condición no éxiste.";
                 return RedirectToAction("Index");
             }
-            ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE", fumador.ID_EXPEDIENTE);
-            return View(fumador);
+            ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE", alcohol.ID_EXPEDIENTE);
+            return View(alcohol);
         }
 
-        // POST: Fumador/Edit/5
+        // POST: Alcohol/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Fumador fumador)
+        public ActionResult Edit(Alcohol alcohol)
         {
             try
             {
-                db.Entry(fumador).State = EntityState.Modified;
+                db.Entry(alcohol).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["mensaje"] = "Atualizado con éxito.";
                 return RedirectToAction("Index");
@@ -127,52 +129,52 @@ namespace EMEP.Controllers
             catch
             {
 
-                ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE", fumador.ID_EXPEDIENTE);
-                return View(fumador);
+                ViewBag.ID_EXPEDIENTE = new SelectList(db.Expediente, "id", "ID_PACIENTE", alcohol.ID_EXPEDIENTE);
+                return View(alcohol);
             }
         }
 
-        // GET: Fumador/Delete/5
+        // GET: Alcohol/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
+
                 TempData["mensaje"] = "Especifique la condición.";
                 return RedirectToAction("Index");
             }
-            Fumador fumador = db.Fumador.Find(id);
-            if (fumador != null)
+            Alcohol alcohol = db.Alcohol.Find(id);
+            if (alcohol != null)
             {
-                if (fumador.activo == 1)
+                if (alcohol.activo == 1)
                 {
-                    fumador.estado_String = "Activo";
+                    alcohol.estado_String = "Activo";
                 }
                 else
                 {
-                    fumador.estado_String = "Inactivo";
+                    alcohol.estado_String = "Inactivo";
                 }
             }
-            if (fumador == null)
+            if (alcohol == null)
             {
                 TempData["mensaje"] = "La condición no éxiste.";
                 return RedirectToAction("Index");
             }
-            return View(fumador);
+            return View(alcohol);
         }
 
-        // POST: Fumador/Delete/5
+        // POST: Alcohol/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Fumador fumador = db.Fumador.Find(id);
-            if (fumador.activo == 0)
+            Alcohol alcohol = db.Alcohol.Find(id); if (alcohol.activo == 0)
             {
-                fumador.activo = 1;
+                alcohol.activo = 1;
             }
             else
             {
-                fumador.activo = 0;
+                alcohol.activo = 0;
             }
             db.SaveChanges();
             TempData["mensaje"] = "Estado actualizado.";
