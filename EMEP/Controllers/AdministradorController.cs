@@ -42,7 +42,7 @@ namespace EMEP.Controllers
         {
             if (id == null)
             {
-                TempData["mensaje"] = "Especifique la Administrador.";
+                TempData["mensaje"] = "Especifique el Administrador.";
                 return RedirectToAction("Index");
             }
             Administrador administrador = db.Administrador.Find(id);
@@ -219,29 +219,28 @@ namespace EMEP.Controllers
                 {
                     var administradorDB = db.Administrador.Where(a => a.correo.Equals(correo) && a.contraseña.Equals(contrasenna)).FirstOrDefault();
                     var medicoDB = db.Medico.Where(a => a.correo.Equals(correo) && a.contrasenna.Equals(contrasenna)).FirstOrDefault();
-                    var pacienteDB = db.Paciente.Where(a => a.correo.Equals(correo) && a.contrasenna.Equals(contrasenna) && a.estado == 1).FirstOrDefault();
-
+                    var pacienteDB = db.Paciente.Where(a => a.correo.Equals(correo) && a.contrasenna.Equals(contrasenna)).FirstOrDefault();
 
                     if (administradorDB != null && administradorDB.estado == 1)
                     {
                         Session["CorreoId"] = administradorDB.correo.ToString();
                         Session["Nombre"] = administradorDB.correo.ToString();
-                        TempData["mensaje"] = "Bienvenid@";
+                        //TempData["mensaje"] = "Bienvenid@";
                         return RedirectToAction("IndexAd", "Home");
                     }
                     if (medicoDB != null && medicoDB.estado == 1)
                     {
                         Session["CorreoId"] = medicoDB.correo.ToString();
                         Session["Nombre"] = medicoDB.nombre.ToString();
-                        TempData["mensaje"] = "Bienvenid@";
+                        //TempData["mensaje"] = "Bienvenid@";
                         return RedirectToAction("IndexMed", "Home");
                     }
                     if (pacienteDB != null && pacienteDB.estado == 1)
                     {
                         Session["CorreoId"] = pacienteDB.correo.ToString();
                         Session["Nombre"] = pacienteDB.nombre.ToString();
-                        TempData["mensaje"] = "Bienvenid@";
-                        return RedirectToAction("IndexAC", "Home");
+                        //TempData["mensaje"] = "Bienvenid@";
+                        return RedirectToAction("IndexPa", "Home");
                     }
                 }
                 TempData["mensaje"] = "Datos invalidos, verifique";
@@ -253,7 +252,14 @@ namespace EMEP.Controllers
                 return View(ad);
             }
         }
-        
+
+        [HttpPost]
+        public ActionResult RegistroPacientes()
+        {
+
+            return RedirectToAction("InicioSecion", "Paciente"); ;
+        }
+
         public ActionResult LogOff()
         {
             Session.Clear();

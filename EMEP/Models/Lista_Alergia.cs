@@ -11,9 +11,7 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Lista_Alergia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,41 +19,16 @@ namespace EMEP.Models
         {
             this.Expediente_Alergia = new HashSet<Expediente_Alergia>();
         }
-
-        [Key]
+    
         public int id { get; set; }
-        [Display(Name = "Nombre")]
-        [Required(ErrorMessage = "Debe de escribir el nombre")]
         public string descripcion { get; set; }
-        [Display(Name = "Categoria")]
-        [Required(ErrorMessage = "Seleccione la categoria")]
         public int ID_CATEGORIA { get; set; }
-
-        [Display(Name = "Estado")]
         public int estado { get; set; }
-        [Display(Name = "Estado")]
-        [Required(ErrorMessage = "Seleccione el estado")]
         public string estado_String { get; set; }
-
-        [Display(Name = "Reacción")]
-        [Required(ErrorMessage = "Debe de escribir la reacción")]
         public string reaccion { get; set; }
-
-        [Column(TypeName = "text")]
-        [Display(Name = "Observaciones")]
-        [DataType(DataType.MultilineText)]
         public string observaciones { get; set; }
-
-        [Display(Name = "Expediente")]
-        [Required(ErrorMessage = "Seleccione el expediente")]
-        public int ID_EXPEDIENTE { get; set; }
-
-        //[DataType(DataType.ImageUrl)]
-        [Display(Name = "Imagen")]
-        [Required(ErrorMessage = "Seleccione imegen")]
-        public byte[] img { get; set; }
-
-        [Display(Name = "Categoria")]
+        public Nullable<int> ID_EXPEDIENTE { get; set; }
+        public string img { get; set; }
         public virtual Categoria_Alergia Categoria_Alergia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expediente_Alergia> Expediente_Alergia { get; set; }

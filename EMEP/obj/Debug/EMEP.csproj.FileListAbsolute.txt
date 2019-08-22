@@ -274,6 +274,7 @@ C:\Users\Pablo Mora\Source\Repos\EMEPNuevo2\EMEP\bin\es\System.Web.WebPages.reso
 C:\Users\Pablo Mora\Source\Repos\EMEPNuevo2\EMEP\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Pablo Mora\Source\Repos\EMEPNuevo2\EMEP\bin\es\System.Web.WebPages.Razor.resources.dll
 C:\Users\Pablo Mora\Source\Repos\EMEPNuevo2\EMEP\bin\es\System.Web.Optimization.resources.dll
+C:\Users\Estudiante\Desktop\Nueva carpeta\EMEP\obj\Debug\EMEP.csprojResolveAssemblyReference.cache
 C:\Users\Estudiante\Desktop\Nueva carpeta\EMEP\bin\roslyn\csc.exe
 C:\Users\Estudiante\Desktop\Nueva carpeta\EMEP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Estudiante\Desktop\Nueva carpeta\EMEP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll

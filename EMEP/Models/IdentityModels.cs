@@ -30,6 +30,6 @@ namespace EMEP.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<EMEP.Models.Paciente_Asociado> Paciente_Asociado { get; set; }
+        public System.Data.Entity.DbSet<EMEP.Models.Paciente_Dueño_Asociado> Paciente_Dueño_Asociado { get; set; }
     }
 }

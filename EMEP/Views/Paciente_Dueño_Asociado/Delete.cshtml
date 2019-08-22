@@ -1,0 +1,40 @@
+﻿@model EMEP.Models.Paciente_Dueño_Asociado
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPa.cshtml";
+}
+
+<h2>Remocer</h2>
+
+<div>
+    <h4>Paciente Asociado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_PACIENTE_DUE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_PACIENTE_DUE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_PACIENTE_ASO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_PACIENTE_ASO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Remover" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

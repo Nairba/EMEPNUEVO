@@ -11,34 +11,17 @@ namespace EMEP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Otra_Enfermedad
     {
-        [Key]
         public int id { get; set; }
-        [Display(Name = "Nombre")]
-        [Required(ErrorMessage = "Debe de escribir el nombre")]
         public string descripciom { get; set; }
-        [Display(Name = "Categoria")]
-        [Required(ErrorMessage = "Seleccione la categoria")]
         public string categoria { get; set; }
-        public int estado { get; set; }
+        public Nullable<int> estado { get; set; }
+        public string img { get; set; }
+        public Nullable<int> ID_EXPEDIENTE { get; set; }
 
-
-        [Display(Name = "Estado")]
-        [Required(ErrorMessage = "Seleccione el estado")]
         public string estado_String { get; set; }
-
-        [DataType(DataType.ImageUrl)]
-        [Display(Name = "Imagen")]
-        [Required(ErrorMessage = "Seleccione imegen")]
-        public byte[] img { get; set; }
-        [Display(Name = "Expediente")]
-        [Required(ErrorMessage = "Seleccione el expediente")]
-        public int ID_EXPEDIENTE { get; set; }
-
-        [Display(Name = "Expediente")]
         public virtual Expediente Expediente { get; set; }
     }
 }
