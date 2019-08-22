@@ -25,13 +25,13 @@ namespace EMEP.Models
 
         [Display(Name = "Contraseña")]
         [Required(ErrorMessage = "Digite la contraseña")]
-        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$",
+    /*    [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$",
             ErrorMessage = "Formato invalido: La contraseña debe tener al menos 4 " + "\n" +
             "caracteres, no más de 8 caracteres y debe" + "\n" +
             "incluir al menos una letra mayúscula, una" + "\n" +
-            "letra minúscula y un dígito numérico.")]
+            "letra minúscula y un dígito numérico.")]*/
         public string contraseña { get; set; }
-
+    
 
         public int estado { get; set; }
 
