@@ -87,6 +87,17 @@ namespace EMEP.Models
         [Required(ErrorMessage = "Seleccione el tipo de usuario")]
         public int ID_TIPO_USUARIO { get; set; }
         [Display(Name = "Tipo de usuario")]
+
+
+        public string NombreCompletoM
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", p_Apellido, s_Apellido, nombre);
+            }
+        }
+
+        [Display(Name = "Tipo de usuario")]
         public virtual Tipo_Usuario Tipo_Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Paciente_Dueño_Asociado> Paciente_Dueño_Asociado { get; set; }
